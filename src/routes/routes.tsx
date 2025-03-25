@@ -8,6 +8,7 @@ import { ProtectedRoute } from "../components/layout/ProtectedRoute";
 import { routesGenerator } from "../utils/routesGenerator";
 import { adminPaths } from "./adminRoutes";
 import { userPaths } from "./userRoutes";
+import Home from "../pages/Home";
 
 export const router = createBrowserRouter([
   {
@@ -49,5 +50,9 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
   },
 ]);

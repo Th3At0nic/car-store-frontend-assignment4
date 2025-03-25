@@ -1,3 +1,9 @@
+@import "tailwindcss";
+
+
+/* You can also add custom styles below */
+
+
 * {
     box-sizing: border-box;
     padding: 0;

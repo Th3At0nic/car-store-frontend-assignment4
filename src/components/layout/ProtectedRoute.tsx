@@ -5,8 +5,8 @@ import {
   TUserFromToken,
   userCurrentToken,
 } from "../../redux/features/auth/authSlice";
-import { Navigate } from "react-router-dom";
 import { verifyToken } from "../../utils/verifyToken";
+import { Navigate } from "react-router-dom";
 
 type TProtectedRoute = {
   children: ReactNode;
@@ -38,7 +38,7 @@ export const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
   }, [shouldLogout, dispatch]);
 
   if (!token || shouldLogout) {
-    return <Navigate to="/login" replace={true} />;
+    return <Navigate to="/home" replace={true} />;
   }
   return children;
 };
