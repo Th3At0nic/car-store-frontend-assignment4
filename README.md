@@ -1,5 +1,3 @@
-# React TypeScript Dashboard Boilerplate 🚀
-
 This is a **fully structured, scalable, and production-ready** React + TypeScript boilerplate, built with Ant Design, Redux Toolkit, and React Router DOM. It serves as a base for admin dashboards and web applications, reducing setup time for future projects.
 
 ---
