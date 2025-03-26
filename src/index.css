@@ -322,3 +322,238 @@
 
 
 /******************* whyChooseUs style ends ****************/
+
+
+/******************* what our customer say style starts ****************/
+
+.testimonials {
+    background-color: #f9f9f9;
+    padding: 50px 20px;
+    text-align: center;
+
+}
+
+.testimonial-header h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.testimonial-header p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.testimonial-name h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.testimonial-name p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .testimonial-header h2 {
+        font-size: 2rem;
+    }
+
+    .testimonial-header p {
+        font-size: 1rem;
+    }
+
+    .testimonial-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .testimonial-header p {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+
+/******************* what our customer say style ends ****************/
+
+
+
+
+/******************* Footer Section style starts ****************/
+
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-logo {
+    flex: 1;
+    max-width: 300px;
+}
+
+.footer-logo h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    font-size: 1rem;
+    color: #bbb;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 10px 0;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #f39c12;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #f39c12;
+}
+
+.footer-contact p {
+    font-size: 1rem;
+    color: #bbb;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .footer-links,
+    .footer-social,
+    .footer-contact {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+
+    .footer-links ul {
+        padding-left: 0;
+    }
+
+    .footer-social a {
+        font-size: 1.2rem;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-links ul li a {
+        font-size: 1rem;
+    }
+
+    .footer-contact p {
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+}
+
+
+/******************* Footer Section style ends ****************/
