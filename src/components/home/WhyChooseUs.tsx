@@ -1,47 +1,67 @@
 const WhyChooseUs = () => {
   return (
-    <div className="py-16 bg-white">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-extrabold text-blue-600">
-          Why Choose Us?
-        </h2>
-        <p className="text-lg font-semibold text-gray-700 max-w-3xl mx-auto">
-          Discover the reasons why our customers trust us for their car buying
-          experience. We are committed to providing the best cars, service, and
-          experience.
-        </p>
+    <section className="why-choose-us">
+      <div className="why-title">
+        <h2>Why Choose Us?</h2>
+        <p>Your trusted partner in finding the perfect car.</p>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-12">
-        <div className="bg-blue-50 p-6 rounded-lg shadow-lg text-center">
-          <h3 className="text-2xl font-semibold text-blue-600 mb-4">
-            Wide Selection
-          </h3>
-          <p className="text-lg text-gray-700">
-            We offer a broad range of cars from all top brands to suit every
-            need and budget.
+      <div className="why-cards">
+        <div className="why-card">
+          <div className="icon">
+            <i className="fas fa-car"></i>
+          </div>
+          <h3>Wide Selection</h3>
+          <p>
+            Explore a vast collection of new and used cars tailored to your
+            needs.
           </p>
         </div>
-        <div className="bg-blue-50 p-6 rounded-lg shadow-lg text-center">
-          <h3 className="text-2xl font-semibold text-blue-600 mb-4">
-            Expert Advice
-          </h3>
-          <p className="text-lg text-gray-700">
-            Our team of experts are here to guide you in making the best choice
-            based on your needs.
+        <div className="why-card">
+          <div className="icon">
+            <i className="fas fa-shield-alt"></i>
+          </div>
+          <h3>Trusted Quality</h3>
+          <p>
+            All cars go through rigorous inspections to ensure top-notch
+            quality.
           </p>
         </div>
-        <div className="bg-blue-50 p-6 rounded-lg shadow-lg text-center">
-          <h3 className="text-2xl font-semibold text-blue-600 mb-4">
-            Affordable Pricing
-          </h3>
-          <p className="text-lg text-gray-700">
-            We offer competitive prices with flexible financing options to help
-            you get the car you want.
+        <div className="why-card">
+          <div className="icon">
+            <i className="fas fa-handshake"></i>
+          </div>
+          <h3>Best Deals</h3>
+          <p>Get the best market rates with unbeatable discounts and offers.</p>
+        </div>
+        <div className="why-card">
+          <div className="icon">
+            <i className="fas fa-headset"></i>
+          </div>
+          <h3>24/7 Support</h3>
+          <p>
+            Our dedicated team is always ready to assist you anytime, anywhere.
+          </p>
+        </div>
+        <div className="why-card">
+          <div className="icon">
+            <i className="fas fa-money-bill-wave"></i>
+          </div>
+          <h3>Easy Financing</h3>
+          <p>
+            Flexible loan options with low interest rates to suit your budget.
+          </p>
+        </div>
+        <div className="why-card">
+          <div className="icon">
+            <i className="fas fa-tools"></i>
+          </div>
+          <h3>Free Maintenance</h3>
+          <p>
+            Enjoy free maintenance services for the first year after purchase.
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

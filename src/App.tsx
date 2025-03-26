@@ -1,3 +1,4 @@
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Navigate } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import { ProtectedRoute } from "./components/layout/ProtectedRoute";
