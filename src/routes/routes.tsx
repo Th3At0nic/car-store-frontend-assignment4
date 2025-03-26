@@ -9,6 +9,7 @@ import { routesGenerator } from "../utils/routesGenerator";
 import { adminPaths } from "./adminRoutes";
 import { userPaths } from "./userRoutes";
 import Home from "../pages/Home";
+import AllCars from "../pages/product/AllCars";
 
 export const router = createBrowserRouter([
   {
@@ -54,5 +55,13 @@ export const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/cars/:category",
+    element: <AllCars />,
+  },
+  {
+    path: "/cars",
+    element: <AllCars />,
   },
 ]);

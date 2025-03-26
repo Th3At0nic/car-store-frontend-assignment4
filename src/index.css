@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 
-/* You can also add custom styles below */
 
 
 * {
@@ -9,3 +8,155 @@
     padding: 0;
     margin: 0;
 }
+
+/* Container for the entire page */
+.cars-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header styles */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.header-description {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Search bar styles */
+.search-bar {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input-container {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+/* Cars grid layout */
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+/* Individual car card styling */
+.car-card {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+    transform: scale(1.05);
+}
+
+/* Carousel for car images */
+.car-carousel .slick-slide img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+
+/* Car info section inside the card */
+.car-info {
+    text-align: center;
+    padding: 1rem;
+}
+
+.car-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.car-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-top: 1rem;
+}
+
+/* View Details button */
+.view-details-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/******************* All Cars page styles ends ****************/
+
+/******************* search car filed style starts ****************/
+.search-bar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    margin: 40px auto;
+}
+
+.search-input:focus {
+    border-color: #1890ff;
+    box-shadow: 0 0 4px rgba(24, 144, 255, 0.4);
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+
+/******************* search car filed style ends ****************/

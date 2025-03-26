@@ -3,6 +3,7 @@ import suvImg from "../../assets/images/SUV.jpg";
 import truckImg from "../../assets/images/Truck.jpg";
 import coupeImg from "../../assets/images/coupe1f.jpg";
 import convertibleImg from "../../assets/images/Convertible1.jpg";
+import { Link } from "react-router-dom";
 
 const categories = [
   { name: "Sedan", image: sedanImg },
@@ -13,11 +14,6 @@ const categories = [
 ];
 
 const BrowseByCategory = () => {
-  const handleCategoryClick = (category: string) => {
-    // history.push(`/cars?category=${category}`);
-    console.log(category);
-  };
-
   return (
     <div
       className="bg-gradient-to-r from-gray-900 to-gray-800 px-4 lg:px-10 text-white"
@@ -34,24 +30,25 @@ const BrowseByCategory = () => {
       {/* Category Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-12 justify-items-center">
         {categories.map((category) => (
-          <div
-            key={category.name}
-            className="cursor-pointer hover:scale-105 transition-transform duration-500"
-            onClick={() => handleCategoryClick(category.name)}
-          >
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img
-                src={category.image}
-                alt={category.name}
-                className="w-full h-auto aspect-[16/9] object-cover"
-              />
-              <div className="text-center p-4">
-                <h3 className="text-xl font-semibold text-gray-800">
-                  {category.name}
-                </h3>
+          <Link to={`/cars/${category.name}`}>
+            <div
+              key={category.name}
+              className="cursor-pointer hover:scale-105 transition-transform duration-500"
+            >
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="w-full h-auto aspect-[16/9] object-cover"
+                />
+                <div className="text-center p-4">
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    {category.name}
+                  </h3>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -1,6 +1,9 @@
-import { Card, Button, Spin, Carousel } from "antd";
+import { Card, Button, Carousel } from "antd";
 import { useGetAllCarsQuery } from "../../redux/features/product/productManagement.api";
 import { TCar } from "../../types/bannerTypes";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "../../utils/LoadingSpinner";
+import { NoDataCard } from "../../utils/NoDataCard";
 
 const FeaturedCars = () => {
   const { data: cars, isLoading } = useGetAllCarsQuery(undefined);
@@ -8,10 +11,15 @@ const FeaturedCars = () => {
   console.log("cars from featured: ", cars);
 
   if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (cars?.data.length === 0) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <Spin size="large" />
-      </div>
+      <NoDataCard
+        title="No Featured Cars"
+        description="sorry, currently there is no featured cars"
+      />
     );
   }
 
@@ -26,21 +34,17 @@ const FeaturedCars = () => {
           Discover Our Top Featured Cars
         </h1>
         <p className="text-lg font-semibold text-gray-700 ">
-          Explore the finest collection of cars, handpicked for their luxury,
-          performance, and design. Find the perfect car that suits your style
-          and needs.
+          Find the perfect car that suits your style and needs.
         </p>
       </div>
 
       {/* "See More" Button */}
       <div className="absolute top-16 right-4">
-        <Button
-          type="primary"
-          className="text-white"
-          onClick={() => (window.location.href = "/cars")}
-        >
-          See All Cars
-        </Button>
+        <Link to={"/cars"}>
+          <Button type="primary" className="text-white">
+            See All Cars
+          </Button>
+        </Link>
       </div>
 
       {/* Featured Cars Grid */}
@@ -68,15 +72,13 @@ const FeaturedCars = () => {
                 {car.brand} {car.model}
               </h3>
               <p className="text-lg font-bold text-gray-600 mt-2">
-                {car.price}
+                $ {car.price}
               </p>
-              <Button
-                type="primary"
-                className="mt-4 w-full"
-                onClick={() => (window.location.href = `/cars/${car._id}`)}
-              >
-                View Details
-              </Button>
+              <Link to={`/cars/${car._id}`}>
+                <Button type="primary" className="mt-4 w-full">
+                  View Details
+                </Button>
+              </Link>
             </div>
           </Card>
         ))}
