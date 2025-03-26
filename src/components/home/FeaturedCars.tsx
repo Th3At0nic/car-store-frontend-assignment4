@@ -18,7 +18,7 @@ const FeaturedCars = () => {
   return (
     <div
       className="py-16 bg-gray-100 px-4 md:px-12"
-      style={{ margin: "30px 30px", position: "relative" }}
+      style={{ margin: "50px 50px", position: "relative" }}
     >
       {/* Title Section */}
       <div className="text-center mb-16" style={{ marginBottom: "30px" }}>
