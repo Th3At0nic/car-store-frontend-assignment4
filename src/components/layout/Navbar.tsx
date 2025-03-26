@@ -62,7 +62,7 @@ const Navbar = () => {
             { key: "3", label: <Link to="/about">About</Link> },
             { key: "4", label: <Link to="/contact">Contact</Link> },
             { key: "5", label: <Link to="/login">Login</Link> },
-            { key: "6", label: <Link to="/signup">Sign Up</Link> },
+            { key: "6", label: <Link to="/register">Sign Up</Link> },
           ]}
         />
       </Drawer>
@@ -93,7 +93,7 @@ const Navbar = () => {
           <Link to="/login">Login</Link>
         </Button>
         <Button type="primary">
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/register">Sign Up</Link>
         </Button>
       </div>
     </Header>

@@ -8,8 +8,6 @@ import { NoDataCard } from "../../utils/NoDataCard";
 const FeaturedCars = () => {
   const { data: cars, isLoading } = useGetAllCarsQuery(undefined);
 
-  console.log("cars from featured: ", cars);
-
   if (isLoading) {
     return <LoadingSpinner />;
   }

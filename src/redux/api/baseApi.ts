@@ -8,6 +8,7 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { logoutUser, setUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
+import { TError } from "../../types";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5000/api",
@@ -35,6 +36,17 @@ const baseQueryWithRefreshToken: BaseQueryFn<
       toast.error("not found", {
         duration: 2000,
       });
+    }, 1000);
+  }
+
+  if (result?.error?.status === 409) {
+    setTimeout(() => {
+      toast.error(
+        (result.error as TError)?.data?.message || "Duplicate Error",
+        {
+          duration: 2000,
+        }
+      );
     }, 1000);
   }
 
