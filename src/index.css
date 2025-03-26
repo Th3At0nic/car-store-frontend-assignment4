@@ -557,3 +557,165 @@
 
 
 /******************* Footer Section style ends ****************/
+
+
+/******************* Car details style starts ****************/
+
+
+/* General Container */
+.car-details-container {
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Title */
+.car-details-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Content Layout */
+.car-details-content {
+    display: block;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Section */
+.car-image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* Adds spacing between images */
+    padding: 20px;
+}
+
+/* Main Image */
+.main-image-container {
+    width: 100%;
+    max-width: 740px;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Ensure the image takes up the full container size */
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This will fill the space while maintaining the image's aspect ratio */
+}
+
+
+/* Thumbnail Gallery */
+.thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.active-thumbnail {
+    border: 2px solid #007bff;
+    transform: scale(1.1);
+}
+
+/* Car Info Section */
+.car-info-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Car Info Title */
+.car-info-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+/* Description */
+.car-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Car Info Details */
+.car-info-details p {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.car-info-details strong {
+    font-weight: bold;
+    color: #222;
+}
+
+.price {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.in-stock {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.out-of-stock {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Buy Now Button */
+.buy-now-btn {
+    margin-top: 20px;
+}
+
+.buy-now-btn button {
+    width: 100%;
+    background-color: #007bff;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buy-now-btn button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/******************* Car details style ends ****************/

@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <h2>CarDealers</h2>
+          <h2>CarNexa</h2>
           <p>Your trusted car dealership</p>
         </div>
 

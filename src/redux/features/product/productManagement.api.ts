@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TQueryParam, TResponseRedux } from "../../../types";
+import { TCar } from "../../../types/bannerTypes";
 import { baseApi } from "../../api/baseApi";
 
 const productManagementApi = baseApi.injectEndpoints({
@@ -20,7 +20,21 @@ const productManagementApi = baseApi.injectEndpoints({
         };
       },
       providesTags: ["cars"],
-      transformResponse: (response: TResponseRedux<any>) => {
+      transformResponse: (response: TResponseRedux<TCar[]>) => {
+        return {
+          data: response?.data,
+          meta: response?.meta,
+        };
+      },
+    }),
+    getCarDetails: builder.query({
+      query: (carId) => {
+        return {
+          url: `/cars/${carId}`,
+          method: "GET",
+        };
+      },
+      transformResponse: (response: TResponseRedux<TCar>) => {
         return {
           data: response?.data,
           meta: response?.meta,
@@ -30,4 +44,5 @@ const productManagementApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllCarsQuery } = productManagementApi;
+export const { useGetAllCarsQuery, useGetCarDetailsQuery } =
+  productManagementApi;

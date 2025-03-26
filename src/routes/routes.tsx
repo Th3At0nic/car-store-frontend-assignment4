@@ -10,6 +10,7 @@ import { adminPaths } from "./adminRoutes";
 import { userPaths } from "./userRoutes";
 import Home from "../pages/Home";
 import AllCars from "../pages/product/AllCars";
+import CarDetails from "../pages/product/CarDetails";
 
 export const router = createBrowserRouter([
   {
@@ -57,11 +58,15 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/cars/:category",
+    path: "/cars/category/:category",
     element: <AllCars />,
   },
   {
     path: "/cars",
     element: <AllCars />,
+  },
+  {
+    path: "/cars/:carId",
+    element: <CarDetails />,
   },
 ]);

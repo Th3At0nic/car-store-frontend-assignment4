@@ -29,12 +29,9 @@ const BrowseByCategory = () => {
 
       {/* Category Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-12 justify-items-center">
-        {categories.map((category) => (
-          <Link to={`/cars/${category.name}`}>
-            <div
-              key={category.name}
-              className="cursor-pointer hover:scale-105 transition-transform duration-500"
-            >
+        {categories.map((category, index) => (
+          <Link key={index} to={`/cars/${category.name}`}>
+            <div className="cursor-pointer hover:scale-105 transition-transform duration-500">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <img
                   src={category.image}

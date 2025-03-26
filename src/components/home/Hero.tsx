@@ -48,7 +48,7 @@ const HeroSection = () => {
             effect="fade"
             className="w-full lg:w-[750px] h-[450px] lg:h-[450px]"
           >
-            {cars.data.flatMap((car: TCar) =>
+            {cars.data?.flatMap((car: TCar) =>
               car.images.map((img, index) => (
                 <div
                   key={`${car._id}-${index}`}
