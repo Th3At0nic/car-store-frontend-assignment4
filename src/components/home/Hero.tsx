@@ -1,6 +1,7 @@
 import { Button, Carousel } from "antd";
 import { useGetAllCarsQuery } from "../../redux/features/product/productManagement.api";
 import { TCar } from "../../types/bannerTypes";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const { data: cars } = useGetAllCarsQuery(undefined);
@@ -22,19 +23,23 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-4">
-          <Button
-            type="primary"
-            size="large"
-            className="bg-blue-500 border-none px-6 py-3 text-lg font-semibold"
-          >
-            Explore Cars
-          </Button>
-          <Button
-            size="large"
-            className="bg-transparent border border-white text-white px-6 py-3 text-lg font-semibold"
-          >
-            Get Started
-          </Button>
+          <Link to={`/cars`}>
+            <Button
+              type="primary"
+              size="large"
+              className="bg-blue-500 border-none px-6 py-3 text-lg font-semibold"
+            >
+              Explore Cars
+            </Button>
+          </Link>
+          <Link to={`/login`}>
+            <Button
+              size="large"
+              className="bg-transparent border border-white text-white px-6 py-3 text-lg font-semibold"
+            >
+              Get Started
+            </Button>
+          </Link>
         </div>
       </div>
 

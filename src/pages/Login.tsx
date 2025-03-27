@@ -4,7 +4,7 @@ import { FieldValues } from "react-hook-form";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useDispatch } from "react-redux";
 import { setUser, TUserFromToken } from "../redux/features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import PHForm from "../components/form/PHForm";
 import PHInput from "../components/form/PHInput";
@@ -12,6 +12,7 @@ import { useState } from "react";
 import { verifyToken } from "../utils/verifyToken";
 
 const Login = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { Title } = Typography;
@@ -27,15 +28,25 @@ const Login = () => {
       };
       const res = await login(userInfo).unwrap();
 
-      const user = verifyToken(res.data.accessToken) as TUserFromToken;
+      if (res.success) {
+        const user = verifyToken(res.data.accessToken) as TUserFromToken;
 
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
+        dispatch(setUser({ user: user, token: res.data.accessToken }));
 
-      toast.success("Logged in successfully", { id: toastId, duration: 2000 });
-
-      navigate(`/${user.role}/dashboard`);
+        toast.success("Logged in successfully", {
+          id: toastId,
+          duration: 2000,
+        });
+        const redirectPath = location.state?.from || `/${user.role}/dashboard`;
+        navigate(redirectPath);
+      } else {
+        toast.error("Could'nt Login", {
+          id: toastId,
+          duration: 2000,
+        });
+      }
     } catch (err) {
-      toast.error(`Something went wrong`, {
+      toast.error(`Something went wrong. Try again`, {
         id: toastId,
         duration: 2000,
       });
@@ -124,10 +135,7 @@ const Login = () => {
         <div className="text-center" style={{ marginTop: "20px" }}>
           <p className="text-sm text-gray-500">
             Doesn’t have an account?{" "}
-            <a
-              href="/register"
-              className="text-blue-500 font-semibold hover:underline"
-            >
+            <a href="/register" className="text-blue-500 font-semibold">
               Sign up
             </a>
           </p>

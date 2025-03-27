@@ -45,19 +45,18 @@ export const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      style={{ height: "100vh", position: "sticky", top: "0", left: "0" }}
+      style={{
+        height: "100vh",
+        position: "sticky",
+        top: "0",
+        left: "0",
+      }}
     >
       {/* Logo */}
-      <div
-        className="demo-logo-vertical"
-        style={{
-          color: "white",
-          textAlign: "center",
-          fontSize: "0.8rem",
-          margin: "18px auto 18px",
-        }}
-      >
-        <h1>CarNexa</h1>
+      <div className="text-white flex h-13 justify-center">
+        <h2 className="text-3xl font-bold" style={{ margin: "auto 0" }}>
+          CarNexa
+        </h2>
       </div>
 
       {/* Sidebar Menu - Takes Remaining Space */}

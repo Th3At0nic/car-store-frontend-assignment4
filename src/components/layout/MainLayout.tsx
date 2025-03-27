@@ -1,5 +1,5 @@
 import { Button, Layout, theme } from "antd";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useAppDispatch } from "../../redux/hooks";
 import { logoutUser } from "../../redux/features/auth/authSlice";
@@ -18,20 +18,29 @@ const MainLayout = () => {
   };
 
   return (
-    <Layout style={{ height: "100%" }}>
+    <Layout>
       <Sidebar />
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+        <Header className="flex" style={{padding: "0 0"}}>
+          <div className="flex gap-4 custom-link-style" style={{marginLeft: "auto"}}>
+            <Link to="/" className="text-white hover:text-gray-200">
+              Home
+            </Link>
+            <Link to="/cars" className="text-white hover:text-gray-200">
+              Cars
+            </Link>
+            <Link to="/about" className="text-white hover:text-gray-200">
+              About
+            </Link>
+            <Link to="/contact" className="text-white hover:text-gray-200">
+              Contact
+            </Link>
+          </div>
+
           <Button
             onClick={handleLogout}
             style={{
-              margin: "auto 15px auto auto",
+              margin: "auto 20px",
               backgroundColor: "red",
               color: "white",
               border: "0",

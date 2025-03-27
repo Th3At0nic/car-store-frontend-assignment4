@@ -11,6 +11,8 @@ import { userPaths } from "./userRoutes";
 import Home from "../pages/Home";
 import AllCars from "../pages/product/AllCars";
 import CarDetails from "../pages/product/CarDetails";
+import Contact from "../pages/Contact";
+import Checkout from "../pages/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
     ],
   },
@@ -68,5 +74,9 @@ export const router = createBrowserRouter([
   {
     path: "/cars/:carId",
     element: <CarDetails />,
+  },
+  {
+    path: "/cars/:carId/checkout",
+    element: <Checkout />,
   },
 ]);

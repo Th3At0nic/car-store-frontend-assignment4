@@ -8,10 +8,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#1E40AF] h-20 flex items-center" style={{padding: "0 10px"}}>
-      <div className="flex justify-between items-center w-full">
+    <nav
+      className="bg-[#1E40AF] h-20  flex items-center"
+      style={{ padding: "0 10px" }}
+    >
+      <div className="flex justify-between items-center w-full custom-link-style">
         {/* Left: Logo */}
-        <Link to="/" className="text-white text-2xl lg:text-4xl font-bold">
+        <Link to="/" className=" text-white text-2xl lg:text-4xl font-bold">
           CarNexa
         </Link>
 
@@ -42,7 +45,7 @@ const Navbar = () => {
         {/* Hamburger Button (Mobile & Tablet) */}
         <button
           className="lg:hidden text-white text-2xl"
-          style={{margin: "0 10px"}}
+          style={{ margin: "0 10px" }}
           onClick={() => setIsOpen(true)}
         >
           <FontAwesomeIcon icon={faBars} size="lg" />
@@ -92,7 +95,7 @@ const Navbar = () => {
               About
             </Link>
             <Link
-              to="/contact"
+              to={"/contact"}
               className="text-gray-700 text-lg font-medium hover:text-[#1E40AF]"
               onClick={() => setIsOpen(false)}
             >

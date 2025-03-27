@@ -2,7 +2,10 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 h-50 flex flex-col justify-between text-white">
+    <footer
+      id="footer"
+      className="bg-gray-900 h-50 flex flex-col justify-between text-white"
+    >
       <div className="w-full flex flex-col mx-auto px-4 sm:px-6 lg:px-12">
         {/* Footer content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -27,7 +30,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/about"
+                  href="/"
                   className="text-sm sm:text-base text-gray-400 hover:text-white"
                 >
                   About Us
@@ -35,7 +38,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/services"
+                  href="/"
                   className="text-sm sm:text-base text-gray-400 hover:text-white"
                 >
                   Services
@@ -43,7 +46,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/contact"
+                  href="/"
                   className="text-sm sm:text-base text-gray-400 hover:text-white"
                 >
                   Contact

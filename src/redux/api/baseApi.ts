@@ -51,30 +51,42 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   }
 
   if (result?.error?.status === 401) {
-    // Request a new token
-    const refreshResult = await fetch(
-      "http://localhost:5000/api/auth/refresh-token",
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    ).then((response) => response.json());
-
-    if (refreshResult?.data?.accessToken) {
-      const user = (api.getState() as RootState).auth.user;
-
-      api.dispatch(
-        setUser({
-          user,
-          token: refreshResult.data.accessToken,
-        })
-      );
-
-      // calling the base query again to auto reload the page/query to capture the result after accessing the new access token and authorization, it doesn't visually reloads the page, it update the state internally without reloading the page
-      result = await baseQuery(args, api, extraOptions);
+    if (
+      (result?.error as TError).data.message === "This Email is not Registered."
+    ) {
+      toast.error((result?.error as TError).data.message + "  SIGN UP", {
+        duration: 4000,
+      });
     } else {
-      toast.error("Session expired. Please log in again.", { duration: 2000 });
-      api.dispatch(logoutUser());
+      // Request a new token
+      const refreshResult = await fetch(
+        "http://localhost:5000/api/auth/refresh-token",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      ).then((response) => response.json());
+
+      if (refreshResult?.data?.accessToken) {
+        const user = (api.getState() as RootState).auth.user;
+
+        api.dispatch(
+          setUser({
+            user,
+            token: refreshResult.data.accessToken,
+          })
+        );
+
+        // calling the base query again to auto reload the page/query to capture the result after accessing the new access token and authorization, it doesn't visually reloads the page, it update the state internally without reloading the page
+        result = await baseQuery(args, api, extraOptions);
+      } else {
+        setTimeout(() => {
+          toast.error("Session expired. Please log in again.", {
+            duration: 2000,
+          });
+          api.dispatch(logoutUser());
+        }, 2100);
+      }
     }
   }
 

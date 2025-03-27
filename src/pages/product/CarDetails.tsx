@@ -1,17 +1,35 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetCarDetailsQuery } from "../../redux/features/product/productManagement.api";
 import { NoDataCard } from "../../utils/NoDataCard";
 import LoadingSpinner from "../../utils/LoadingSpinner";
 import { Button } from "antd";
+import { useAppSelector } from "../../redux/hooks";
+import {
+  TUserFromToken,
+  userCurrentToken,
+} from "../../redux/features/auth/authSlice";
+import { verifyToken } from "../../utils/verifyToken";
 
 const CarDetails = () => {
   const { carId } = useParams();
   const { data: carDetails, isLoading } = useGetCarDetailsQuery(carId);
-
   const car = carDetails?.data;
 
   const [selectedImage, setSelectedImage] = useState(car?.images[0] || "");
+
+  const token = useAppSelector(userCurrentToken);
+  const user = token ? (verifyToken(token as string) as TUserFromToken) : null;
+  const navigate = useNavigate();
+
+  const onBuyNowClick = () => {
+    console.log("bui now clicked");
+    if (user) {
+      navigate(`/cars/${carId}/checkout`);
+    } else {
+      navigate("/login", { state: { from: `/cars/${carId}/checkout` } });
+    }
+  };
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -92,7 +110,7 @@ const CarDetails = () => {
 
           {/* Call to Action */}
           <div className="buy-now-btn">
-            <Button type="primary" size="large">
+            <Button onClick={onBuyNowClick} type="primary" size="large">
               Buy Now
             </Button>
           </div>

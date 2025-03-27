@@ -6,6 +6,10 @@
     margin: 0;
 }
 
+.custom-link-style a {
+    color: white
+}
+
 /* Container for the entire page */
 .cars-container {
     max-width: 1200px;
