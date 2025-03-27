@@ -41,8 +41,20 @@ const productManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
+    orderCar: builder.mutation({
+      query: (data) => {
+        return {
+          url: "/orders/create-order",
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetAllCarsQuery, useGetCarDetailsQuery } =
-  productManagementApi;
+export const {
+  useGetAllCarsQuery,
+  useGetCarDetailsQuery,
+  useOrderCarMutation,
+} = productManagementApi;

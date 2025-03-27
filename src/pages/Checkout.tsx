@@ -1,26 +1,39 @@
 import { useParams } from "react-router-dom";
-import { useGetCarDetailsQuery } from "../redux/features/product/productManagement.api";
+import {
+  useGetCarDetailsQuery,
+  useOrderCarMutation,
+} from "../redux/features/product/productManagement.api";
 import { useState } from "react";
 import { Card, InputNumber, Button, Typography } from "antd";
 import { toast } from "sonner";
+import { currentUser } from "../redux/features/auth/authSlice";
+import { useAppSelector } from "../redux/hooks";
+import LoadingSpinner from "../utils/LoadingSpinner";
+import { NoDataCard } from "../utils/NoDataCard";
 
 const { Title, Text } = Typography;
 
 const Checkout = () => {
   const { carId } = useParams();
+  const [orderCar] = useOrderCarMutation();
+  const user = useAppSelector(currentUser);
   const { data: carDataResponse, isLoading } = useGetCarDetailsQuery(carId);
 
   const carData = carDataResponse?.data;
   const [quantity, setQuantity] = useState(1);
 
-  if (isLoading)
-    return <p className="text-center text-lg">Loading car details...</p>;
+  if (isLoading) return <LoadingSpinner />;
   if (!carData)
-    return <p className="text-center text-red-500">Car not found!</p>;
+    return (
+      <NoDataCard
+        title="Car not found"
+        description="Unfortunately Checkout info not found, try again"
+      />
+    );
 
   const totalPrice = carData.price * quantity;
 
-  const handleOrder = () => {
+  const handleOrder = async () => {
     console.log(quantity, carData.quantity);
     if (quantity > carData.quantity) {
       alert("Not enough stock available!");
@@ -28,16 +41,19 @@ const Checkout = () => {
     }
 
     const orderData = {
-      carId: carData._id,
-      brand: carData.brand,
-      model: carData.model,
-      price: carData.price,
+      car: carData._id,
+      email: user?.userEmail,
+      //   brand: carData.brand,
+      //   model: carData.model,
+      //   price: carData.price,
       quantity,
       totalPrice,
-      paymentMethod: "SurjoPay (Pending Integration)",
+      //   paymentMethod: "SurjoPay (Pending Integration)",
     };
 
     console.log("Order Placed: ", orderData);
+    const res = await orderCar(orderData);
+    console.log("order res: ", res);
     toast.success("Order placed successfully! (Payment will be added later)");
   };
 
