@@ -6,7 +6,10 @@ const HeroSection = () => {
   const { data: cars } = useGetAllCarsQuery(undefined);
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between bg-gradient-to-r from-gray-900 to-gray-800 px-4 sm:px-6 lg:px-12 text-white">
+    <div
+      className="relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between bg-gradient-to-r from-gray-900 to-gray-800 px-4 sm:px-6 lg:px-12 text-white"
+      style={{ paddingLeft: "20px" }}
+    >
       {/* Left Side: Text and CTA */}
       <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
@@ -52,7 +55,7 @@ const HeroSection = () => {
                   <img
                     src={img}
                     alt={`${car.brand} ${car.model}`}
-                    className="w-full h-full object-cover rounded-2xl shadow-lg"
+                    className="w-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px] object-cover rounded-2xl shadow-lg"
                   />
                 </div>
               ))
