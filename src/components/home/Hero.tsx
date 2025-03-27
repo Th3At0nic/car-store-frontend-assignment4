@@ -1,5 +1,4 @@
-import { Button } from "antd";
-import { Carousel } from "antd";
+import { Button, Carousel } from "antd";
 import { useGetAllCarsQuery } from "../../redux/features/product/productManagement.api";
 import { TCar } from "../../types/bannerTypes";
 
@@ -7,46 +6,42 @@ const HeroSection = () => {
   const { data: cars } = useGetAllCarsQuery(undefined);
 
   return (
-    <div className="relative w-full h-[80vh] flex flex-col lg:flex-row items-center justify-between bg-gradient-to-r from-gray-900 to-gray-800 px-4 lg:px-10 text-white">
+    <div className="relative w-full min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between bg-gradient-to-r from-gray-900 to-gray-800 px-4 sm:px-6 lg:px-12 text-white">
       {/* Left Side: Text and CTA */}
-      <div className="w-full lg:w-1/2 space-y-6 lg:pr-10">
-        <div className="space-x-10">
-          <h1 className="text-3xl lg:text-5xl font-bold text-center lg:text-left">
-            Drive Your Dream – Explore the Best Cars Today!
-          </h1>
-          <p
-            className="text-lg text-gray-300 text-center lg:text-left"
-            style={{ margin: "10px 0" }}
-          >
-            Find the perfect ride from our premium collection. Great deals,
-            trusted service!
-          </p>
-        </div>
-        <div className="space-x-10 text-center lg:text-left">
+      <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+          Drive Your Dream – Explore the Best Cars Today!
+        </h1>
+        <p className="text-base sm:text-lg text-gray-300">
+          Find the perfect ride from our premium collection. Great deals,
+          trusted service!
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-4">
           <Button
             type="primary"
             size="large"
-            className="bg-blue-500 border-none"
-            style={{ marginRight: "15px" }}
+            className="bg-blue-500 border-none px-6 py-3 text-lg font-semibold"
           >
             Explore Cars
           </Button>
           <Button
             size="large"
-            className="bg-transparent border border-white text-white"
+            className="bg-transparent border border-white text-white px-6 py-3 text-lg font-semibold"
           >
             Get Started
           </Button>
         </div>
       </div>
 
-      {/* Right Side: Dynamic Car Image Slider */}
-      <div className="w-full lg:w-1/2 flex justify-center lg:pl-10 mt-6 lg:mt-0">
+      {/* Right Side: Car Image Slider */}
+      <div className="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0">
         {cars ? (
           <Carousel
             autoplay
             effect="fade"
-            className="w-full lg:w-[750px] h-[450px] lg:h-[450px]"
+            className="w-full sm:w-[400px] md:w-[500px] lg:w-[750px] h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px]"
           >
             {cars.data?.flatMap((car: TCar) =>
               car.images.map((img, index) => (
@@ -57,7 +52,7 @@ const HeroSection = () => {
                   <img
                     src={img}
                     alt={`${car.brand} ${car.model}`}
-                    className="w-full h-full object-cover rounded-2xl shadow-2xl"
+                    className="w-full h-full object-cover rounded-2xl shadow-lg"
                   />
                 </div>
               ))
