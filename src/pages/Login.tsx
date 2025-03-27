@@ -120,6 +120,18 @@ const Login = () => {
             Login
           </Button>
         </PHForm>
+        {/* Sign Up Link */}
+        <div className="text-center" style={{ marginTop: "20px" }}>
+          <p className="text-sm text-gray-500">
+            Doesn’t have an account?{" "}
+            <a
+              href="/register"
+              className="text-blue-500 font-semibold hover:underline"
+            >
+              Sign up
+            </a>
+          </p>
+        </div>
       </div>
     </Row>
   );
