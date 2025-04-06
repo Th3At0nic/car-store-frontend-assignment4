@@ -12,7 +12,7 @@ const FeaturedCars = () => {
     return <LoadingSpinner />;
   }
 
-  if (cars?.data.length === 0) {
+  if (cars?.data?.length === 0) {
     return (
       <NoDataCard
         title="No Featured Cars"
@@ -47,7 +47,7 @@ const FeaturedCars = () => {
 
       {/* Featured Cars Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {cars?.data.map((car: TCar, index: number) => (
+        {cars?.data?.map((car: TCar, index: number) => (
           <Card
             key={index}
             hoverable

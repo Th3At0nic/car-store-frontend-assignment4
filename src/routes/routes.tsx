@@ -13,7 +13,7 @@ import AllCars from "../pages/product/AllCars";
 import CarDetails from "../pages/product/CarDetails";
 import Contact from "../pages/Contact";
 import Checkout from "../pages/Checkout";
-
+import VerifyPayment from "../pages/VerifyPayment";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -78,5 +78,9 @@ export const router = createBrowserRouter([
   {
     path: "/cars/:carId/checkout",
     element: <Checkout />,
+  },
+  {
+    path: "/order/payment/verify",
+    element: <VerifyPayment />,
   },
 ]);

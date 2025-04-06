@@ -43,18 +43,19 @@ const Checkout = () => {
     const orderData = {
       car: carData._id,
       email: user?.userEmail,
-      //   brand: carData.brand,
-      //   model: carData.model,
-      //   price: carData.price,
       quantity,
       totalPrice,
-      //   paymentMethod: "SurjoPay (Pending Integration)",
     };
 
-    console.log("Order Placed: ", orderData);
     const res = await orderCar(orderData);
-    console.log("order res: ", res);
-    toast.success("Order placed successfully! (Payment will be added later)");
+    toast.success("Order is Pending.Pay Now To Confirm the Order");
+
+    setTimeout(() => {
+      const paymentUrl = res?.data?.data?.paymentUrl;
+      if (paymentUrl) {
+        window.location.href = paymentUrl;
+      }
+    }, 3000);
   };
 
   return (

@@ -50,6 +50,14 @@ const productManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
+    verifyPayment: builder.query({
+      query: (orderId: string) => {
+        return {
+          url: `/payment/verifyPayment?order_id=${orderId}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
@@ -57,4 +65,5 @@ export const {
   useGetAllCarsQuery,
   useGetCarDetailsQuery,
   useOrderCarMutation,
+  useVerifyPaymentQuery,
 } = productManagementApi;
