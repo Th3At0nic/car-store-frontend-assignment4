@@ -1,8 +1,5 @@
 import { useParams } from "react-router-dom";
-import {
-  useGetCarDetailsQuery,
-  useOrderCarMutation,
-} from "../redux/features/product/productManagement.api";
+import { useGetCarDetailsQuery } from "../redux/features/product/productManagement.api";
 import { useState } from "react";
 import { Card, InputNumber, Button, Typography } from "antd";
 import { toast } from "sonner";
@@ -10,6 +7,7 @@ import { currentUser } from "../redux/features/auth/authSlice";
 import { useAppSelector } from "../redux/hooks";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import { NoDataCard } from "../utils/NoDataCard";
+import { useOrderCarMutation } from "../redux/features/orderAndPayment/orderAndPaymentManagement.api";
 
 const { Title, Text } = Typography;
 
@@ -34,7 +32,6 @@ const Checkout = () => {
   const totalPrice = carData.price * quantity;
 
   const handleOrder = async () => {
-    console.log(quantity, carData.quantity);
     if (quantity > carData.quantity) {
       alert("Not enough stock available!");
       return;
@@ -55,7 +52,7 @@ const Checkout = () => {
       if (paymentUrl) {
         window.location.href = paymentUrl;
       }
-    }, 3000);
+    }, 1000);
   };
 
   return (

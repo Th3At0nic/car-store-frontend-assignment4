@@ -41,29 +41,8 @@ const productManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
-    orderCar: builder.mutation({
-      query: (data) => {
-        return {
-          url: "/orders/create-order",
-          method: "POST",
-          body: data,
-        };
-      },
-    }),
-    verifyPayment: builder.query({
-      query: (orderId: string) => {
-        return {
-          url: `/payment/verifyPayment?order_id=${orderId}`,
-          method: "GET",
-        };
-      },
-    }),
   }),
 });
 
-export const {
-  useGetAllCarsQuery,
-  useGetCarDetailsQuery,
-  useOrderCarMutation,
-  useVerifyPaymentQuery,
-} = productManagementApi;
+export const { useGetAllCarsQuery, useGetCarDetailsQuery } =
+  productManagementApi;

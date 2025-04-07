@@ -1,11 +1,12 @@
 // orderVerify.tsx
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { useVerifyPaymentQuery } from "../redux/features/product/productManagement.api";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import { NoDataCard } from "../utils/NoDataCard";
+import { useVerifyPaymentQuery } from "../redux/features/orderAndPayment/orderAndPaymentManagement.api";
 
 const VerifyPayment = () => {
   const [searchParams] = useSearchParams();
+
   const orderId = searchParams.get("order_id");
   const navigate = useNavigate();
 
@@ -53,7 +54,7 @@ const VerifyPayment = () => {
               onClick={() => navigate("/")}
               className="w-full py-3 px-4 bg-green-600 text-white font-semibold text-lg rounded-lg shadow-md hover:bg-green-700 transition duration-300"
             >
-              Go to Dashboard
+              See Orders
             </button>
           </div>
         </div>

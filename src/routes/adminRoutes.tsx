@@ -6,4 +6,13 @@ export const adminPaths = [
     path: "dashboard",
     element: <AdminDashboard />,
   },
+  {
+    name: "All Orders",
+    path: "orders",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/admin/orders/:orderId",
+    element: <AdminDashboard />,
+  },
 ];

@@ -23,7 +23,7 @@ const MainLayout = () => {
       <Layout>
         <Header className="flex" style={{padding: "0 0"}}>
           <div className="flex gap-4 custom-link-style" style={{marginLeft: "auto"}}>
-            <Link to="/" className="text-white hover:text-gray-200">
+            <Link to="/home" className="text-white hover:text-gray-200">
               Home
             </Link>
             <Link to="/cars" className="text-white hover:text-gray-200">

@@ -3,9 +3,18 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "antd";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { currentUser, logoutUser } from "../../redux/features/auth/authSlice";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const user = useAppSelector(currentUser);
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
 
   return (
     <nav
@@ -32,14 +41,31 @@ const Navbar = () => {
           <Link to="/contact" className="text-white hover:text-gray-200">
             Contact
           </Link>
-          <div className="flex gap-4">
-            <Link to="/login">
-              <Button>Login</Button>
-            </Link>
-            <Link to="/register">
-              <Button type="primary">Sign Up</Button>
-            </Link>
-          </div>
+          {user ? (
+            <div>
+              <Button
+                onClick={handleLogout}
+                style={{
+                  margin: "auto 20px",
+                  backgroundColor: "red",
+                  color: "white",
+                  border: "0",
+                  fontWeight: "800",
+                }}
+              >
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <div className="flex gap-4">
+              <Link to="/login">
+                <Button>Login</Button>
+              </Link>
+              <Link to="/register">
+                <Button type="primary">Sign Up</Button>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Hamburger Button (Mobile & Tablet) */}
