@@ -1,5 +1,6 @@
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import ChangePassword from "../pages/ChangePassword";
+import AllOrders from "../pages/order/AllOrders";
 
 export const adminPaths = [
   {
@@ -10,7 +11,7 @@ export const adminPaths = [
   {
     name: "All Orders",
     path: "orders",
-    element: <AdminDashboard />,
+    element: <AllOrders />,
   },
   {
     path: "admin/orders/:orderId", //this is for single order track or show

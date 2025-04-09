@@ -11,6 +11,7 @@ const orderAndPaymentManagementApi = baseApi.injectEndpoints({
           body: data,
         };
       },
+      invalidatesTags: ["orderStatus", "payment"],
     }),
     verifyPayment: builder.query({
       query: (orderId: string) => {
@@ -55,6 +56,26 @@ const orderAndPaymentManagementApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
+      providesTags: ["payment"],
+    }),
+    getAllOrders: builder.query({
+      query: () => {
+        return {
+          url: `/admin/orders`,
+          method: "GET",
+        };
+      },
+      providesTags: ["orderStatus"],
+    }),
+    updateOrderStatus: builder.mutation({
+      query: (args) => {
+        return {
+          url: `/admin/orders/${args.orderId}`,
+          method: "PATCH",
+          body: args.updateStatusData,
+        };
+      },
+      invalidatesTags: ["orderStatus", "payment"],
     }),
   }),
 });
@@ -65,4 +86,6 @@ export const {
   useGetMyOrdersQuery,
   useGetAnOrderQuery,
   useGetMyPaymentHistoryQuery,
+  useGetAllOrdersQuery,
+  useUpdateOrderStatusMutation,
 } = orderAndPaymentManagementApi;
