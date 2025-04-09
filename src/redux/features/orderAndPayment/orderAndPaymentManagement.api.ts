@@ -48,6 +48,14 @@ const orderAndPaymentManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getMyPaymentHistory: builder.query({
+      query: () => {
+        return {
+          url: `payment/history`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
@@ -56,4 +64,5 @@ export const {
   useVerifyPaymentQuery,
   useGetMyOrdersQuery,
   useGetAnOrderQuery,
+  useGetMyPaymentHistoryQuery,
 } = orderAndPaymentManagementApi;

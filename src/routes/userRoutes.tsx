@@ -2,6 +2,7 @@ import ChangePassword from "../pages/ChangePassword";
 import MyOrders from "../pages/order/MyOrders";
 import TrackOrder from "../pages/order/TrackOrder";
 import UserDashboard from "../pages/user/UserDashboard";
+import UserPaymentHistory from "../pages/user/UserPaymentHistory";
 
 export const userPaths = [
   {
@@ -17,6 +18,11 @@ export const userPaths = [
   {
     path: "/user/orders/:orderId",
     element: <TrackOrder />,
+  },
+  {
+    name: "Payment History",
+    path: "payment-history",
+    element: <UserPaymentHistory />,
   },
   {
     name: "Update Password",

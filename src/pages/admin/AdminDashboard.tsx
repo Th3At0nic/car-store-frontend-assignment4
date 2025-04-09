@@ -7,3 +7,13 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
+// Total Orders
+
+// Total Revenue
+
+// Cars in Stock
+
+// Customers Count
+
+// Quick Action buttons: Manage Orders, Add Car, Manage Users

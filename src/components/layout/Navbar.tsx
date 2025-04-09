@@ -33,7 +33,10 @@ const Navbar = () => {
             Home
           </Link>
           {user ? (
-            <Link to="/" className="text-white hover:text-gray-200">
+            <Link
+              to={`/${user.role}/dashboard`}
+              className="text-white hover:text-gray-200"
+            >
               Profile
             </Link>
           ) : (
