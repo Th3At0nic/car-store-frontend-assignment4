@@ -9,6 +9,7 @@ import { TError, TOrder } from "../../types";
 import { Card, Tag, Typography, Button, Dropdown, MenuProps } from "antd";
 import { DownOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -16,6 +17,7 @@ const AllOrders = () => {
   const [updateOrderStatus] = useUpdateOrderStatusMutation();
   const [deleteOrder] = useDeleteOrderMutation();
   const { data: allOrders, isLoading } = useGetAllOrdersQuery(undefined);
+  const navigate = useNavigate();
 
   const getOrderStatusTag = (status: string) => {
     switch (status) {
@@ -51,7 +53,7 @@ const AllOrders = () => {
   };
 
   const handleViewDetails = (orderId: string) => {
-    console.log("details clicked: ", orderId);
+    navigate(`/admin/orders/${orderId}`);
   };
 
   const handleStatusChange = async (orderId: string, item: any) => {
@@ -189,6 +191,10 @@ const AllOrders = () => {
                   </Button>
                 </Dropdown>
                 <Button
+                  style={{
+                    backgroundColor: "red",
+                    color: "white",
+                  }}
                   icon={<DeleteOutlined />}
                   onClick={() => handleDelete(order._id)}
                 >

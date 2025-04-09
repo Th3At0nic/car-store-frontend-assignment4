@@ -1,6 +1,7 @@
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import ChangePassword from "../pages/ChangePassword";
 import AllOrders from "../pages/order/AllOrders";
+import OrderDetails from "../pages/order/OrderDetails";
 
 export const adminPaths = [
   {
@@ -14,12 +15,8 @@ export const adminPaths = [
     element: <AllOrders />,
   },
   {
-    path: "admin/orders/:orderId", //this is for single order track or show
-    element: <AdminDashboard />,
-  },
-  {
-    path: "admin/orders/:orderId", //this is for delete order
-    element: <AdminDashboard />,
+    path: "/admin/orders/:orderId", //this is for single order track or show
+    element: <OrderDetails />,
   },
   {
     name: "Update Password",
