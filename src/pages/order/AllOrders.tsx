@@ -1,19 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
+  useDeleteOrderMutation,
   useGetAllOrdersQuery,
   useUpdateOrderStatusMutation,
 } from "../../redux/features/orderAndPayment/orderAndPaymentManagement.api";
 import LoadingSpinner from "../../utils/LoadingSpinner";
 import { TError, TOrder } from "../../types";
-import {
-  Card,
-  Tag,
-  Typography,
-  Button,
-  Dropdown,
-  message,
-  MenuProps,
-} from "antd";
+import { Card, Tag, Typography, Button, Dropdown, MenuProps } from "antd";
 import { DownOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { toast } from "sonner";
 
@@ -21,6 +14,7 @@ const { Title, Text } = Typography;
 
 const AllOrders = () => {
   const [updateOrderStatus] = useUpdateOrderStatusMutation();
+  const [deleteOrder] = useDeleteOrderMutation();
   const { data: allOrders, isLoading } = useGetAllOrdersQuery(undefined);
 
   const getOrderStatusTag = (status: string) => {
@@ -44,10 +38,16 @@ const AllOrders = () => {
     }
   };
 
-  const handleDelete = (orderId: string) => {
-    // Add delete functionality here (API call to delete the order)
-    message.success(`Order ${orderId} deleted successfully`);
-    console.log("delete clicked: ", orderId);
+  const handleDelete = async (orderId: string) => {
+    const result = await deleteOrder(orderId);
+
+    if (result?.data?.success) {
+      toast.success(result.data.message);
+    } else if (result?.error) {
+      toast.error((result?.error as TError)?.data.message);
+    } else {
+      toast.error("Something Went Wrong. Couldn't Delete");
+    }
   };
 
   const handleViewDetails = (orderId: string) => {
@@ -75,8 +75,10 @@ const AllOrders = () => {
   }));
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <Title level={1}>All Orders</Title>
+    <div style={{ padding: "20px" }}>
+      <div className="flex justify-center">
+        <Title level={1}>All Orders</Title>
+      </div>
 
       {isLoading ? (
         <LoadingSpinner />
