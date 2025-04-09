@@ -29,18 +29,42 @@ const Navbar = () => {
 
         {/* Right: Nav Links & Buttons (Hidden on Small Screens) */}
         <div className="hidden lg:flex items-center gap-5">
-          <Link to="/" className="text-white hover:text-gray-200">
+          <Link to="/home" className="text-white hover:text-gray-200">
             Home
           </Link>
+          {user ? (
+            <Link to="/" className="text-white hover:text-gray-200">
+              Profile
+            </Link>
+          ) : (
+            <Link to="/login" className="text-white hover:text-gray-200">
+              Profile
+            </Link>
+          )}
+
           <Link to="/cars" className="text-white hover:text-gray-200">
             Cars
           </Link>
-          <Link to="/about" className="text-white hover:text-gray-200">
-            About
-          </Link>
-          <Link to="/contact" className="text-white hover:text-gray-200">
-            Contact
-          </Link>
+          {user ? (
+            <Link to="/about" className="text-white hover:text-gray-200">
+              About
+            </Link>
+          ) : (
+            <Link to="/about-us" className="text-white hover:text-gray-200">
+              About
+            </Link>
+          )}
+
+          {user ? (
+            <Link to="/contact" className="text-white hover:text-gray-200">
+              Contact
+            </Link>
+          ) : (
+            <Link to="/contact-us" className="text-white hover:text-gray-200">
+              Contact
+            </Link>
+          )}
+
           {user ? (
             <div>
               <Button

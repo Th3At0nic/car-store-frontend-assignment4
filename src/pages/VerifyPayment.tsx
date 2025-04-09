@@ -51,7 +51,7 @@ const VerifyPayment = () => {
           </div>
           <div className="mt-8">
             <button
-              onClick={() => navigate("/")}
+              onClick={() => navigate(`/user/orders`)}
               className="w-full py-3 px-4 bg-green-600 text-white font-semibold text-lg rounded-lg shadow-md hover:bg-green-700 transition duration-300"
             >
               See Orders

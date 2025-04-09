@@ -27,6 +27,14 @@ export const router = createBrowserRouter([
         path: "contact",
         element: <Contact />,
       },
+      {
+        path: "/cars/:carId/checkout",
+        element: <Checkout />,
+      },
+      {
+        path: "/order/payment/verify",
+        element: <VerifyPayment />,
+      },
     ],
   },
   {
@@ -64,23 +72,23 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/cars/category/:category",
-    element: <AllCars />,
+    path: "/about-us",
+    element: <About />,
+  },
+  {
+    path: "/contact-us",
+    element: <Contact />,
   },
   {
     path: "/cars",
     element: <AllCars />,
   },
   {
+    path: "/cars/category/:category",
+    element: <AllCars />,
+  },
+  {
     path: "/cars/:carId",
     element: <CarDetails />,
-  },
-  {
-    path: "/cars/:carId/checkout",
-    element: <Checkout />,
-  },
-  {
-    path: "/order/payment/verify",
-    element: <VerifyPayment />,
   },
 ]);

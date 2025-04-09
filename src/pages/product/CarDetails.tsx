@@ -10,6 +10,8 @@ import {
   userCurrentToken,
 } from "../../redux/features/auth/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/layout/Footer";
 
 const CarDetails = () => {
   const { carId } = useParams();
@@ -43,79 +45,83 @@ const CarDetails = () => {
   }
 
   return (
-    <div className="car-details-container">
-      {/* Page Title */}
-      <h1 className="car-details-title">
-        {car.brand} {car.model} ({car.year})
-      </h1>
+    <div>
+      <Navbar />
+      <div className="car-details-container">
+        {/* Page Title */}
+        <h1 className="car-details-title">
+          {car.brand} {car.model} ({car.year})
+        </h1>
 
-      {/* Main Layout */}
-      <div className="car-details-content">
-        {/* Image Gallery */}
-        <div className="car-image-section">
-          {/* Large Main Image */}
-          <div className="main-image-container">
-            <img
-              src={selectedImage || car.images[0]}
-              alt={car.brand}
-              className="main-image"
-            />
-          </div>
-
-          {/* Thumbnail Gallery */}
-          <div className="thumbnail-gallery">
-            {car.images.map((img, index) => (
+        {/* Main Layout */}
+        <div className="car-details-content">
+          {/* Image Gallery */}
+          <div className="car-image-section">
+            {/* Large Main Image */}
+            <div className="main-image-container">
               <img
-                key={index}
-                src={img}
-                alt={`${car.brand} ${car.model}`}
-                className={`thumbnail ${
-                  selectedImage === img ? "active-thumbnail" : ""
-                }`}
-                onClick={() => setSelectedImage(img)}
+                src={selectedImage || car.images[0]}
+                alt={car.brand}
+                className="main-image"
               />
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Car Details Section */}
-        <div className="car-info-section">
-          <h2 className="car-info-title">
-            {car.brand} {car.model} ({car.year})
-          </h2>
-          <p className="car-description">{car.description}</p>
-
-          {/* Car Info */}
-          <div className="car-info-details">
-            <p>
-              <strong>Category:</strong> {car.category}
-            </p>
-            <p>
-              <strong>Year:</strong> {car.year}
-            </p>
-            <p>
-              <strong>Price:</strong>{" "}
-              <span className="price">${car.price}</span>
-            </p>
-            <p>
-              <strong>Stock:</strong>{" "}
-              <span className={car.inStock ? "in-stock" : "out-of-stock"}>
-                {car.inStock ? "Available" : "Out of Stock"}
-              </span>
-            </p>
-            <p>
-              <strong>Quantity:</strong> {car.quantity}
-            </p>
+            {/* Thumbnail Gallery */}
+            <div className="thumbnail-gallery">
+              {car.images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`${car.brand} ${car.model}`}
+                  className={`thumbnail ${
+                    selectedImage === img ? "active-thumbnail" : ""
+                  }`}
+                  onClick={() => setSelectedImage(img)}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="buy-now-btn">
-            <Button onClick={onBuyNowClick} type="primary" size="large">
-              Buy Now
-            </Button>
+          {/* Car Details Section */}
+          <div className="car-info-section">
+            <h2 className="car-info-title">
+              {car.brand} {car.model} ({car.year})
+            </h2>
+            <p className="car-description">{car.description}</p>
+
+            {/* Car Info */}
+            <div className="car-info-details">
+              <p>
+                <strong>Category:</strong> {car.category}
+              </p>
+              <p>
+                <strong>Year:</strong> {car.year}
+              </p>
+              <p>
+                <strong>Price:</strong>{" "}
+                <span className="price">${car.price}</span>
+              </p>
+              <p>
+                <strong>Stock:</strong>{" "}
+                <span className={car.inStock ? "in-stock" : "out-of-stock"}>
+                  {car.inStock ? "Available" : "Out of Stock"}
+                </span>
+              </p>
+              <p>
+                <strong>Quantity:</strong> {car.quantity}
+              </p>
+            </div>
+
+            {/* Call to Action */}
+            <div className="buy-now-btn">
+              <Button onClick={onBuyNowClick} type="primary" size="large">
+                Buy Now
+              </Button>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

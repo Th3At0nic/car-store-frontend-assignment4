@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useAppDispatch } from "../../redux/hooks";
 import { logoutUser } from "../../redux/features/auth/authSlice";
+import Footer from "./Footer";
 
 const { Header, Content } = Layout;
 
@@ -21,8 +22,11 @@ const MainLayout = () => {
     <Layout>
       <Sidebar />
       <Layout>
-        <Header className="flex" style={{padding: "0 0"}}>
-          <div className="flex gap-4 custom-link-style" style={{marginLeft: "auto"}}>
+        <Header className="flex" style={{ padding: "0 0" }}>
+          <div
+            className="flex gap-4 custom-link-style"
+            style={{ marginLeft: "auto" }}
+          >
             <Link to="/home" className="text-white hover:text-gray-200">
               Home
             </Link>
@@ -62,6 +66,7 @@ const MainLayout = () => {
             <Outlet />
           </div>
         </Content>
+        <Footer />
       </Layout>
     </Layout>
   );

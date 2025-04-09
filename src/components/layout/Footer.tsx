@@ -3,10 +3,13 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer
-      id="footer"
-      className="bg-gray-900 h-50 flex flex-col justify-between text-white"
+      className="bg-gray-900 h-60 flex flex-col justify-between text-white"
+      style={{ marginTop: "100px" }}
     >
-      <div className="w-full flex flex-col mx-auto px-4 sm:px-6 lg:px-12">
+      <div
+        className="w-full flex flex-col sm:px-6 lg:px-12"
+        style={{ padding: "50px 50px" }}
+      >
         {/* Footer content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
@@ -102,9 +105,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       {/* Footer Bottom */}
-      <div className="footer-bottom bg-gray-800 py-4">
+      <div className="footer-bottom bg-gray-800">
         <p className="text-center text-sm text-gray-400">
           &copy; {new Date().getFullYear()} CarNexa. All rights reserved.
         </p>
