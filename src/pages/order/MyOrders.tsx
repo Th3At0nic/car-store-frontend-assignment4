@@ -28,7 +28,7 @@ const getPaymentStatusColor = (status: string) => {
   switch (status) {
     case "PAID":
       return "green";
-    case "FAILED":
+    case "PAYMENT FAILED":
       return "red";
     case "UNPAID":
     default:
@@ -122,9 +122,6 @@ const MyOrders = () => {
                 Track Order
               </Tag>
             </div>
-            {/* <div style={{ marginTop: "10px" }}>
-              <Button>Track Order</Button>
-            </div> */}
           </Card>
         ))}
       </div>

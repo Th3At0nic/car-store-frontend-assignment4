@@ -1,3 +1,4 @@
+import ChangePassword from "../pages/ChangePassword";
 import MyOrders from "../pages/order/MyOrders";
 import TrackOrder from "../pages/order/TrackOrder";
 import UserDashboard from "../pages/user/UserDashboard";
@@ -16,5 +17,10 @@ export const userPaths = [
   {
     path: "/user/orders/:orderId",
     element: <TrackOrder />,
+  },
+  {
+    name: "Update Password",
+    path: "auth/change-password",
+    element: <ChangePassword />,
   },
 ];

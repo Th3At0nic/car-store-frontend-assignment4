@@ -38,9 +38,9 @@ const getPaymentTagColor = (status: string) => {
     case "PAID":
       return "green";
     case "UNPAID":
-      return "red";
-    case "FAILED":
       return "orange";
+    case "PAYMENT FAILED":
+      return "red";
     default:
       return "default";
   }
