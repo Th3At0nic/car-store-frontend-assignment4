@@ -41,8 +41,20 @@ const productManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
+    calculateRevenue: builder.query({
+      query: () => {
+        return {
+          url: `/admin/orders/revenue`,
+          method: "GET",
+        };
+      },
+      providesTags: ["revenue"],
+    }),
   }),
 });
 
-export const { useGetAllCarsQuery, useGetCarDetailsQuery } =
-  productManagementApi;
+export const {
+  useGetAllCarsQuery,
+  useGetCarDetailsQuery,
+  useCalculateRevenueQuery,
+} = productManagementApi;

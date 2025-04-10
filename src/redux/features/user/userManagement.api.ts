@@ -8,6 +8,7 @@ const userManagementApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["users"],
     }),
     changePassword: builder.mutation({
       query: (data) => ({
@@ -16,8 +17,18 @@ const userManagementApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    getAllUsers: builder.query({
+      query: () => ({
+        url: `/admin/users`,
+        method: "GET",
+      }),
+      providesTags: ["users"],
+    }),
   }),
 });
 
-export const { useChangePasswordMutation, useRegisterUserMutation } =
-  userManagementApi;
+export const {
+  useChangePasswordMutation,
+  useRegisterUserMutation,
+  useGetAllUsersQuery,
+} = userManagementApi;

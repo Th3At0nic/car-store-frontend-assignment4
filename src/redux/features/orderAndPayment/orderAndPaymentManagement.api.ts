@@ -11,7 +11,7 @@ const orderAndPaymentManagementApi = baseApi.injectEndpoints({
           body: data,
         };
       },
-      invalidatesTags: ["orders", "payment"],
+      invalidatesTags: ["orders", "payment", "revenue"],
     }),
     verifyPayment: builder.query({
       query: (orderId: string) => {
