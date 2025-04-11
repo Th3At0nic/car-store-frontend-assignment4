@@ -25,7 +25,6 @@ const CarDetails = () => {
   const navigate = useNavigate();
 
   const onBuyNowClick = () => {
-    console.log("bui now clicked");
     if (user) {
       navigate(`/cars/${carId}/checkout`);
     } else {
@@ -114,10 +113,18 @@ const CarDetails = () => {
 
             {/* Call to Action */}
             <div className="buy-now-btn">
-              <Button onClick={onBuyNowClick} type="primary" size="large">
+              <Button
+                disabled={user?.role === "admin"}
+                onClick={onBuyNowClick}
+                type="primary"
+                size="large"
+              >
                 Buy Now
               </Button>
             </div>
+            {
+              user?.role === "admin" && <div style={{color:"red", textAlign: "center"}}><p>Admin Can't make an order. To Buy a Product, Login From an User Account</p></div>
+            }
           </div>
         </div>
       </div>
