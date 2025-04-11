@@ -24,6 +24,13 @@ const userManagementApi = baseApi.injectEndpoints({
       }),
       providesTags: ["users"],
     }),
+    changeUserStatus: builder.mutation({
+      query: (userId) => ({
+        url: `/admin/users/${userId}`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["users"],
+    }),
   }),
 });
 
@@ -31,4 +38,5 @@ export const {
   useChangePasswordMutation,
   useRegisterUserMutation,
   useGetAllUsersQuery,
+  useChangeUserStatusMutation,
 } = userManagementApi;
