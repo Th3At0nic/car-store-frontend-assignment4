@@ -142,7 +142,7 @@ const OrderDetails = () => {
         </div>
       </Card>
       <Button
-        style={{ backgroundColor: "red", color: "white", fontWeight:"bold" }}
+        danger
         size="large"
         icon={<DeleteOutlined />}
         onClick={() => handleDelete(_id)}

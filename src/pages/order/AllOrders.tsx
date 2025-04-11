@@ -191,11 +191,8 @@ const AllOrders = () => {
                   </Button>
                 </Dropdown>
                 <Button
-                  style={{
-                    backgroundColor: "red",
-                    color: "white",
-                  }}
                   icon={<DeleteOutlined />}
+                  danger
                   onClick={() => handleDelete(order._id)}
                 >
                   Delete
