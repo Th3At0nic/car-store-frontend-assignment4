@@ -50,6 +50,16 @@ const productManagementApi = baseApi.injectEndpoints({
       },
       providesTags: ["revenue"],
     }),
+    addACar: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/admin/cars/add-car`,
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["cars"],
+    }),
   }),
 });
 
@@ -57,4 +67,5 @@ export const {
   useGetAllCarsQuery,
   useGetCarDetailsQuery,
   useCalculateRevenueQuery,
+  useAddACarMutation,
 } = productManagementApi;

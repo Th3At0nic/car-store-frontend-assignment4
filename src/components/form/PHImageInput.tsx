@@ -17,13 +17,14 @@ const PHImageInput = ({ name, label }: TPHImageInputProps) => {
         }) => (
           <Form.Item label={label}>
             <Input
+              multiple
               type="file"
               value={value?.fileName}
               {...field}
               accept="image/png, image/jpeg, image/jpg, image/webp"
               onChange={(e) => {
-                const file = e.target.files?.[0] || null;
-                onChange(file); // Update form state with selected file
+                const files = Array.from(e.target.files || []);
+                onChange(files); // Store array of File objects
               }}
             />
             {error && <small style={{ color: "red" }}>{error.message}</small>}

@@ -1,4 +1,5 @@
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import CreateCar from "../pages/admin/CreateCar";
 import ChangePassword from "../pages/ChangePassword";
 import AllOrders from "../pages/order/AllOrders";
 import OrderDetails from "../pages/order/OrderDetails";
@@ -9,6 +10,11 @@ export const adminPaths = [
     name: "Dashboard",
     path: "dashboard",
     element: <AdminDashboard />,
+  },
+  {
+    name: "Add Car",
+    path: "add-car",
+    element: <CreateCar />,
   },
   {
     name: "All Orders",

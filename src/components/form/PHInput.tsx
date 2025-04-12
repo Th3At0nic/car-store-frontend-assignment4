@@ -8,6 +8,7 @@ type TPHInputProps = {
   disabled?: boolean;
   defaultValue?: string | number; // Add defaultValue prop
   placeholder?: string;
+  rows?: number;
 };
 
 const PHInput = ({
@@ -17,6 +18,7 @@ const PHInput = ({
   disabled,
   defaultValue,
   placeholder,
+  rows,
 }: TPHInputProps) => {
   return (
     <div style={{ marginBottom: "15px" }}>
@@ -25,13 +27,23 @@ const PHInput = ({
         defaultValue={defaultValue ?? ""} // Ensure default value is passed
         render={({ field, fieldState: { error } }) => (
           <Form.Item label={label}>
-            <Input
-              placeholder={placeholder}
-              {...field}
-              type={type}
-              id={name}
-              disabled={disabled}
-            />
+            {type === "textarea" ? (
+              <Input.TextArea
+                placeholder={placeholder}
+                {...field}
+                rows={rows}
+                id={name}
+                disabled={disabled}
+              />
+            ) : (
+              <Input
+                placeholder={placeholder}
+                {...field}
+                type={type}
+                id={name}
+                disabled={disabled}
+              />
+            )}
             {error && <small style={{ color: "red" }}>{error.message}</small>}
           </Form.Item>
         )}

@@ -100,7 +100,7 @@ const Footer = () => {
               Contact us: <strong>+123 456 7890</strong>
             </p>
             <p>
-              Email: <strong>info@cardealers.com</strong>
+              Email: <strong>info@carnexa.com</strong>
             </p>
           </div>
         </div>

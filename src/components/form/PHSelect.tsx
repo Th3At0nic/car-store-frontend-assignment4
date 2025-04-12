@@ -5,7 +5,9 @@ import { Controller, useFormContext } from "react-hook-form";
 type TPHSelectProps = {
   label: string;
   name: string;
-  options: { value: string; label: string; disabled?: boolean }[] | undefined;
+  options:
+    | { value: string | boolean; label: string; disabled?: boolean }[]
+    | undefined;
   disabled?: boolean;
   defaultValue?: { value: string; label: string };
   mode?: "multiple" | "tags" | undefined;
