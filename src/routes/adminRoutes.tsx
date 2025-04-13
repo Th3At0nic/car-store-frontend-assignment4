@@ -3,6 +3,7 @@ import CreateCar from "../pages/admin/CreateCar";
 import ChangePassword from "../pages/ChangePassword";
 import AllOrders from "../pages/order/AllOrders";
 import OrderDetails from "../pages/order/OrderDetails";
+import AllCars from "../pages/product/AllCars";
 import AllUsers from "../pages/user/AllUsers";
 
 export const adminPaths = [
@@ -14,7 +15,20 @@ export const adminPaths = [
   {
     name: "Add Car",
     path: "add-car",
-    element: <CreateCar />,
+    element: <CreateCar type="create" />,
+  },
+  {
+    name: "All Cars",
+    path: "cars",
+    element: <AllCars type="admin" />,
+  },
+  {
+    path: "cars/category/:category",
+    element: <AllCars type="admin" />,
+  },
+  {
+    path: "update-car",
+    element: <CreateCar type="update" />,
   },
   {
     name: "All Orders",

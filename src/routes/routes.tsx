@@ -81,14 +81,14 @@ export const router = createBrowserRouter([
   },
   {
     path: "/cars",
-    element: <AllCars />,
+    element: <AllCars type="user" />,
   },
   {
     path: "/cars/category/:category",
-    element: <AllCars />,
+    element: <AllCars type="user" />,
   },
   {
     path: "/cars/:carId",
-    element: <CarDetails />,
+    element: <CarDetails type="user" />,
   },
 ]);

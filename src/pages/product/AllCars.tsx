@@ -9,7 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 
-const AllCars = () => {
+const AllCars = ({ type }: { type: "admin" | "user" }) => {
   const { category } = useParams(); // Get category from URL params
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -40,7 +40,8 @@ const AllCars = () => {
 
   return (
     <div>
-      <Navbar />
+      {type === "user" && <Navbar />}
+
       <div className="cars-container">
         <div className="header">
           <h1 className="header-title">Browse All Cars</h1>
@@ -89,11 +90,26 @@ const AllCars = () => {
                   {car.brand} {car.model}
                 </h3>
                 <p className="car-price">$ {car.price}</p>
-                <Link to={`/cars/${car._id}`}>
-                  <Button type="primary" className="view-details-btn">
-                    View Details
-                  </Button>
-                </Link>
+                {type === "user" ? (
+                  <Link to={`/cars/${car._id}`}>
+                    <Button type="primary" className="view-details-btn">
+                      View Details
+                    </Button>
+                  </Link>
+                ) : (
+                  <div className="flex justify-center gap-3">
+                    <Link to={`/cars/${car._id}`}>
+                      <Button type="primary" className="view-details-btn">
+                        View Details
+                      </Button>
+                    </Link>
+                    <Link to={`/admin/update-car`}>
+                      <Button type="primary" className="view-details-btn">
+                        Update Info
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </Card>
           ))}

@@ -22,7 +22,8 @@ const categoryOptions = carCategories.map((item) => ({
   value: item,
 }));
 
-const CreateCar = () => {
+const CreateCar = ({ type }: { type: "create" | "update" }) => {
+  console.log("type: ", type);
   const [addACar] = useAddACarMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {

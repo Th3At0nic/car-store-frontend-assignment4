@@ -13,7 +13,7 @@ import { verifyToken } from "../../utils/verifyToken";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 
-const CarDetails = () => {
+const CarDetails = ({ type }: { type: "admin" | "user" }) => {
   const { carId } = useParams();
   const { data: carDetails, isLoading } = useGetCarDetailsQuery(carId);
   const car = carDetails?.data;
@@ -23,6 +23,13 @@ const CarDetails = () => {
   const token = useAppSelector(userCurrentToken);
   const user = token ? (verifyToken(token as string) as TUserFromToken) : null;
   const navigate = useNavigate();
+
+  const onUpdateCarClick = () => {
+    console.log("update car button clicked");
+    if (user?.role === "admin") {
+      navigate(`/admin/update-car`);
+    }
+  };
 
   const onBuyNowClick = () => {
     if (user) {
@@ -45,7 +52,8 @@ const CarDetails = () => {
 
   return (
     <div>
-      <Navbar />
+      {type === "user" && <Navbar />}
+
       <div className="car-details-container">
         {/* Page Title */}
         <h1 className="car-details-title">
@@ -111,20 +119,24 @@ const CarDetails = () => {
               </p>
             </div>
 
-            {/* Call to Action */}
-            <div className="buy-now-btn">
-              <Button
-                disabled={user?.role === "admin"}
-                onClick={onBuyNowClick}
-                type="primary"
-                size="large"
-              >
-                Buy Now
-              </Button>
-            </div>
-            {
-              user?.role === "admin" && <div style={{color:"red", textAlign: "center"}}><p>Admin Can't make an order. To Buy a Product, Login From an User Account</p></div>
-            }
+            {user?.role === "admin" ? (
+              <div className="buy-now-btn">
+                <Button onClick={onUpdateCarClick} type="primary" size="large">
+                  Update Car Info
+                </Button>
+              </div>
+            ) : (
+              <div className="buy-now-btn">
+                <Button
+                  disabled={user?.role === "admin"}
+                  onClick={onBuyNowClick}
+                  type="primary"
+                  size="large"
+                >
+                  Buy Now
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
