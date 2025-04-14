@@ -1,7 +1,7 @@
 # 🚗 CarNexa - Car Store – Frontend (Assignment 4)
 
 **Live Frontend**: [https://github.com/Th3At0nic/car-store-frontend-assignment4](https://github.com/Th3At0nic/car-store-frontend-assignment4)  
-**Live Backend**: _[Add your backend deployment URL here]_
+**Live Backend**: https://assignment2-car-store.vercel.app/
 
 A professional **Car Store platform** with full-stack functionalities: user registration, login, car listing, order management, and admin control. Built with **React, TypeScript, Redux Toolkit, Ant Design, Tailwind CSS**, and connected to a powerful backend.
 
@@ -72,8 +72,8 @@ A professional **Car Store platform** with full-stack functionalities: user regi
 ---
 
 ## 🗂 Folder Structure
-src/ │ ├── components/ # Reusable components (Button, Form, Modal, etc.) ├── layout/ # App & Dashboard layouts ├── pages/ # Page-level components (AddCar, AllUsers, Orders, etc.) ├── redux/ │ └── features/ # API slices (auth, car, order, user) ├── routes/ # Protected routing logic ├── types/ # Type definitions (TUser, TCar, etc.) ├── utils/ # Utilities (private routes, tokens, formatting) └── main.tsx # Entry point
 
+src/ │ ├── components/ # Reusable components (Button, Form, Modal, etc.) ├── layout/ # App & Dashboard layouts ├── pages/ # Page-level components (AddCar, AllUsers, Orders, etc.) ├── redux/ │ └── features/ # API slices (auth, car, order, user) ├── routes/ # Protected routing logic ├── types/ # Type definitions (TUser, TCar, etc.) ├── utils/ # Utilities (private routes, tokens, formatting) └── main.tsx # Entry point
 
 ---
 
