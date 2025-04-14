@@ -9,6 +9,7 @@ type TPHInputProps = {
   defaultValue?: string | number; // Add defaultValue prop
   placeholder?: string;
   rows?: number;
+  required?: boolean;
 };
 
 const PHInput = ({
@@ -19,6 +20,7 @@ const PHInput = ({
   defaultValue,
   placeholder,
   rows,
+  required,
 }: TPHInputProps) => {
   return (
     <div style={{ marginBottom: "15px" }}>
@@ -34,6 +36,7 @@ const PHInput = ({
                 rows={rows}
                 id={name}
                 disabled={disabled}
+                required={required}
               />
             ) : (
               <Input
@@ -42,6 +45,7 @@ const PHInput = ({
                 type={type}
                 id={name}
                 disabled={disabled}
+                required={required}
               />
             )}
             {error && <small style={{ color: "red" }}>{error.message}</small>}

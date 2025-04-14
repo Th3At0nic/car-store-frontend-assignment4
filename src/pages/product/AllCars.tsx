@@ -103,7 +103,7 @@ const AllCars = ({ type }: { type: "admin" | "user" }) => {
                         View Details
                       </Button>
                     </Link>
-                    <Link to={`/admin/update-car`}>
+                    <Link to={`/admin/update-car/${car._id}`}>
                       <Button type="primary" className="view-details-btn">
                         Update Info
                       </Button>

@@ -5,9 +5,15 @@ type TPHDatePickerProps = {
   name: string;
   label?: string;
   picker?: "date" | "month" | "quarter" | "time" | "week" | "year";
+  required?: boolean;
 };
 
-const PHDatePicker = ({ name, label, picker }: TPHDatePickerProps) => {
+const PHDatePicker = ({
+  name,
+  label,
+  picker,
+  required,
+}: TPHDatePickerProps) => {
   return (
     <div style={{ marginBottom: "15px" }}>
       <Controller
@@ -15,6 +21,7 @@ const PHDatePicker = ({ name, label, picker }: TPHDatePickerProps) => {
         render={({ field, fieldState: { error } }) => (
           <Form.Item label={label}>
             <DatePicker
+              required={required}
               picker={picker}
               {...field}
               id={name}

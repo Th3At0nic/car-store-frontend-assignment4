@@ -5,10 +5,15 @@ import PHForm from "../../components/form/PHForm";
 import PHImageInput from "../../components/form/PHImageInput";
 import PHInput from "../../components/form/PHInput";
 import PHSelect from "../../components/form/PHSelect";
-import { useAddACarMutation } from "../../redux/features/product/productManagement.api";
+import {
+  useAddACarMutation,
+  useGetCarDetailsQuery,
+} from "../../redux/features/product/productManagement.api";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { TError } from "../../types";
+import { useParams } from "react-router-dom";
+import LoadingSpinner from "../../utils/LoadingSpinner";
 
 const carCategories = ["Sedan", "SUV", "Truck", "Coupe", "Convertible"];
 
@@ -22,12 +27,35 @@ const categoryOptions = carCategories.map((item) => ({
   value: item,
 }));
 
-const CreateCar = ({ type }: { type: "create" | "update" }) => {
-  console.log("type: ", type);
+const CreateCar = () => {
   const [addACar] = useAddACarMutation();
 
+  const { carId } = useParams();
+
+  const isUpdateMode = Boolean(carId); //same as !!carId
+
+  const { data: car, isLoading } = useGetCarDetailsQuery(carId!, {
+    skip: !isUpdateMode,
+  });
+
+  const defaultFormValue = {
+    ...car?.data,
+    year: car?.data?.year ? dayjs(`${car.data.year}-01-01`) : undefined,
+  };
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = toast.loading("Adding Car. Please Wait a moment.");
+    const toastId = toast.loading(
+      "Uploading Images & Adding Car. Please Wait."
+    );
+
+    if (!data.category) {
+      alert(`You Must Select Category`);
+      return;
+    }
+    if (!data.inStock) {
+      alert(`You Must Select In Stock`);
+      return;
+    }
 
     const modifiedData = {
       brand: data.brand,
@@ -43,7 +71,7 @@ const CreateCar = ({ type }: { type: "create" | "update" }) => {
     const formData = new FormData();
     formData.append("data", JSON.stringify(modifiedData));
 
-    data?.images.forEach((file: File) => {
+    data?.images?.forEach((file: File) => {
       formData.append("files", file);
     });
 
@@ -57,23 +85,32 @@ const CreateCar = ({ type }: { type: "create" | "update" }) => {
     } else toast.error("Something Went Wrong. Try again.", { id: toastId });
   };
 
+  if (isUpdateMode && isLoading) return <LoadingSpinner />;
+
   return (
     <Row>
       <Col span={24}>
-        <PHForm onSubmit={onSubmit} defaultValues={[]}>
-          <Divider>Car Info</Divider>
+        <PHForm
+          onSubmit={onSubmit}
+          defaultValues={isUpdateMode ? defaultFormValue : undefined}
+        >
+          {isUpdateMode ? (
+            <Divider>Update Car Info</Divider>
+          ) : (
+            <Divider>Create Car Info</Divider>
+          )}
           <Row gutter={10}>
             <Col span={24} lg={8} md={12}>
-              <PHInput type="text" name="brand" label="Brand" />
+              <PHInput type="text" name="brand" label="Brand" required />
             </Col>
             <Col span={24} lg={8} md={12}>
-              <PHInput type="text" name="model" label="Model" />
+              <PHInput type="text" name="model" label="Model" required />
             </Col>
             <Col span={24} lg={8} md={12}>
-              <PHDatePicker picker="year" name="year" label="Year" />
+              <PHDatePicker picker="year" name="year" label="Year" required />
             </Col>
             <Col span={24} lg={8} md={12}>
-              <PHInput type="number" name="price" label="Price" />
+              <PHInput type="number" name="price" label="Price" required />
             </Col>
             <Col span={24} lg={8} md={12}>
               <PHSelect
@@ -83,7 +120,12 @@ const CreateCar = ({ type }: { type: "create" | "update" }) => {
               />
             </Col>
             <Col span={24} lg={8} md={12}>
-              <PHInput type="number" name="quantity" label="Quantity" />
+              <PHInput
+                type="number"
+                name="quantity"
+                label="Quantity"
+                required
+              />
             </Col>
             <Col span={24} lg={8} md={12}>
               <PHInput
@@ -91,6 +133,7 @@ const CreateCar = ({ type }: { type: "create" | "update" }) => {
                 rows={4}
                 name="description"
                 label="Description"
+                required
               />
             </Col>
             <Col span={24} lg={8} md={12}>
@@ -101,7 +144,11 @@ const CreateCar = ({ type }: { type: "create" | "update" }) => {
               />
             </Col>
             <Col span={24} lg={8} md={12}>
-              <PHImageInput name="images" label="Upload Car Pictures" />
+              <PHImageInput
+                name="images"
+                label="Upload Car Pictures"
+                required
+              />
             </Col>
           </Row>
           <Button type="primary" htmlType="submit">

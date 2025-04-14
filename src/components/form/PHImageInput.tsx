@@ -4,9 +4,10 @@ import { Controller } from "react-hook-form";
 type TPHImageInputProps = {
   name: string;
   label: string;
+  required?: boolean;
 };
 
-const PHImageInput = ({ name, label }: TPHImageInputProps) => {
+const PHImageInput = ({ name, label, required }: TPHImageInputProps) => {
   return (
     <div style={{ marginBottom: "15px" }}>
       <Controller
@@ -18,6 +19,7 @@ const PHImageInput = ({ name, label }: TPHImageInputProps) => {
           <Form.Item label={label}>
             <Input
               multiple
+              required={required}
               type="file"
               value={value?.fileName}
               {...field}

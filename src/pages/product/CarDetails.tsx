@@ -27,7 +27,7 @@ const CarDetails = ({ type }: { type: "admin" | "user" }) => {
   const onUpdateCarClick = () => {
     console.log("update car button clicked");
     if (user?.role === "admin") {
-      navigate(`/admin/update-car`);
+      navigate(`/admin/update-car/${carId}`);
     }
   };
 

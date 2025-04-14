@@ -15,7 +15,7 @@ export const adminPaths = [
   {
     name: "Add Car",
     path: "add-car",
-    element: <CreateCar type="create" />,
+    element: <CreateCar />,
   },
   {
     name: "All Cars",
@@ -27,8 +27,8 @@ export const adminPaths = [
     element: <AllCars type="admin" />,
   },
   {
-    path: "update-car",
-    element: <CreateCar type="update" />,
+    path: "update-car/:carId",
+    element: <CreateCar />,
   },
   {
     name: "All Orders",
