@@ -1,4 +1,4 @@
-# 🚗 Car Store – Frontend (Assignment 4)
+# 🚗 CarNexa - Car Store – Frontend (Assignment 4)
 
 **Live Frontend**: [https://github.com/Th3At0nic/car-store-frontend-assignment4](https://github.com/Th3At0nic/car-store-frontend-assignment4)  
 **Live Backend**: _[Add your backend deployment URL here]_
