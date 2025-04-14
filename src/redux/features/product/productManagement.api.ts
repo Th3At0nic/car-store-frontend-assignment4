@@ -60,6 +60,15 @@ const productManagementApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["cars"],
     }),
+    deleteACar: builder.mutation({
+      query: (carId) => {
+        return {
+          url: `/admin/cars/${carId}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["cars"],
+    }),
   }),
 });
 
@@ -68,4 +77,5 @@ export const {
   useGetCarDetailsQuery,
   useCalculateRevenueQuery,
   useAddACarMutation,
+  useDeleteACarMutation,
 } = productManagementApi;

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetCarDetailsQuery } from "../../redux/features/product/productManagement.api";
+import {
+  useDeleteACarMutation,
+  useGetCarDetailsQuery,
+} from "../../redux/features/product/productManagement.api";
 import { NoDataCard } from "../../utils/NoDataCard";
 import LoadingSpinner from "../../utils/LoadingSpinner";
 import { Button } from "antd";
@@ -12,17 +15,39 @@ import {
 import { verifyToken } from "../../utils/verifyToken";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
+import { toast } from "sonner";
+import { TError } from "../../types";
 
 const CarDetails = ({ type }: { type: "admin" | "user" }) => {
   const { carId } = useParams();
   const { data: carDetails, isLoading } = useGetCarDetailsQuery(carId);
   const car = carDetails?.data;
+  const [deleteCar] = useDeleteACarMutation();
 
   const [selectedImage, setSelectedImage] = useState(car?.images[0] || "");
 
   const token = useAppSelector(userCurrentToken);
   const user = token ? (verifyToken(token as string) as TUserFromToken) : null;
   const navigate = useNavigate();
+
+  const handleCarDelete = async () => {
+    const toastId = toast.loading("Deleting the car...");
+
+    const result = await deleteCar(carId);
+
+    if (result?.data?.success) {
+      toast.success(result.data.message, { id: toastId });
+      setTimeout(() => {
+        navigate("/admin/cars");
+      }, 1000);
+    } else if (result?.error) {
+      toast.error(
+        (result.error as TError)?.data?.message ||
+          "Delete Failed. Something went wrong",
+        { id: toastId }
+      );
+    }
+  };
 
   const onUpdateCarClick = () => {
     console.log("update car button clicked");
@@ -120,10 +145,26 @@ const CarDetails = ({ type }: { type: "admin" | "user" }) => {
             </div>
 
             {user?.role === "admin" ? (
-              <div className="buy-now-btn">
-                <Button onClick={onUpdateCarClick} type="primary" size="large">
-                  Update Car Info
-                </Button>
+              <div className="flex justify-around gap-2">
+                <div className="buy-now-btn w-full">
+                  <Button
+                    onClick={onUpdateCarClick}
+                    type="primary"
+                    size="large"
+                  >
+                    Update Car Info
+                  </Button>
+                </div>
+                <div className="buy-now-btn w-full">
+                  <Button
+                    onClick={handleCarDelete}
+                    type="primary"
+                    danger
+                    size="large"
+                  >
+                    Delete
+                  </Button>
+                </div>
               </div>
             ) : (
               <div className="buy-now-btn">

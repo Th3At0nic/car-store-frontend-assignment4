@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { useGetAllCarsQuery } from "../../redux/features/product/productManagement.api";
+import {
+  useDeleteACarMutation,
+  useGetAllCarsQuery,
+} from "../../redux/features/product/productManagement.api";
 import { TCar } from "../../types/bannerTypes";
 import LoadingSpinner from "../../utils/LoadingSpinner";
 import { NoDataCard } from "../../utils/NoDataCard";
@@ -8,6 +11,8 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
+import { toast } from "sonner";
+import { TError } from "../../types";
 
 const AllCars = ({ type }: { type: "admin" | "user" }) => {
   const { category } = useParams(); // Get category from URL params
@@ -20,6 +25,7 @@ const AllCars = ({ type }: { type: "admin" | "user" }) => {
 
   // Fetch cars with dynamic parameters
   const { data: cars, isLoading, error } = useGetAllCarsQuery(queryParams);
+  const [deleteCar] = useDeleteACarMutation();
 
   if (isLoading) return <LoadingSpinner />;
   if (error)
@@ -37,6 +43,22 @@ const AllCars = ({ type }: { type: "admin" | "user" }) => {
       />
     );
   }
+
+  const handleCarDelete = async (carId: string) => {
+    const toastId = toast.loading("Deleting the car...");
+
+    const result = await deleteCar(carId);
+
+    if (result?.data?.success) {
+      toast.success(result.data.message, { id: toastId });
+    } else if (result?.error) {
+      toast.error(
+        (result.error as TError)?.data?.message ||
+          "Delete Failed. Something went wrong",
+        { id: toastId }
+      );
+    }
+  };
 
   return (
     <div>
@@ -105,9 +127,17 @@ const AllCars = ({ type }: { type: "admin" | "user" }) => {
                     </Link>
                     <Link to={`/admin/update-car/${car._id}`}>
                       <Button type="primary" className="view-details-btn">
-                        Update Info
+                        Update
                       </Button>
                     </Link>
+                    <Button
+                      onClick={() => handleCarDelete(car._id)}
+                      type="primary"
+                      danger
+                      className="view-details-btn"
+                    >
+                      Delete
+                    </Button>
                   </div>
                 )}
               </div>
@@ -115,7 +145,8 @@ const AllCars = ({ type }: { type: "admin" | "user" }) => {
           ))}
         </div>
       </div>
-      <Footer />
+
+      {type === "user" && <Footer />}
     </div>
   );
 };
