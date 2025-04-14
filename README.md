@@ -1,54 +1,100 @@
-# React + TypeScript + Vite
+# 🚗 Car Store – Frontend (Assignment 4)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Frontend**: [https://github.com/Th3At0nic/car-store-frontend-assignment4](https://github.com/Th3At0nic/car-store-frontend-assignment4)  
+**Live Backend**: _[Add your backend deployment URL here]_
 
-Currently, two official plugins are available:
+A professional **Car Store platform** with full-stack functionalities: user registration, login, car listing, order management, and admin control. Built with **React, TypeScript, Redux Toolkit, Ant Design, Tailwind CSS**, and connected to a powerful backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔥 Core Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ✅ General Features (For All Users)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+- View all available cars
+- Responsive UI for all screen sizes
+- Real-time page updates (no manual reload)
+- Browse cars without login
+- **Protected purchase**: Users must log in or sign up to place an order
+- Register and log in as a new user
+- Toast notifications for feedback (success/failure)
+
+---
+
+### 👤 User Features
+
+- Register and login
+- View all cars
+- Place orders (after login)
+- View their own orders
+- Cancel their orders
+- Real-time order status update
+
+---
+
+### 🧑‍💼 Admin Features
+
+- Role-based access for Admins
+- **User Management**:
+  - View all users
+  - Deactivate/Activate users
+  - Admins cannot deactivate other admins
+- **Car Management**:
+  - Add new cars with image uploads (FormData)
+  - Edit existing car details (prefilled form via URL param & dynamic state)
+  - Delete cars (with confirmation modal)
+- **Order Management**:
+  - View all orders
+  - Change order status
+  - Real-time updates after actions
+
+---
+
+## 🧭 Routing & Access Control
+
+- **React Router DOM** for client-side routing
+- **Protected Routes**:
+  - Any user can **browse cars** freely
+  - To **place an order**, user must be logged in
+  - Admin routes are protected and only accessible to Admins
+
+---
+
+## 📦 Tech Stack
+
+| Frontend                  | Libraries & Tools           |
+| ------------------------- | --------------------------- |
+| React + TypeScript        | Ant Design UI, Tailwind CSS |
+| Redux Toolkit + RTK Query | React Router DOM            |
+| React Hook Form + Zod     | React Hot Toast             |
+| Vite                      | Day.js (for dates)          |
+
+---
+
+## 🗂 Folder Structure
+src/ │ ├── components/ # Reusable components (Button, Form, Modal, etc.) ├── layout/ # App & Dashboard layouts ├── pages/ # Page-level components (AddCar, AllUsers, Orders, etc.) ├── redux/ │ └── features/ # API slices (auth, car, order, user) ├── routes/ # Protected routing logic ├── types/ # Type definitions (TUser, TCar, etc.) ├── utils/ # Utilities (private routes, tokens, formatting) └── main.tsx # Entry point
+
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/Th3At0nic/car-store-frontend-assignment4.git
+cd car-store-frontend-assignment4
+
+npm install
+# or
+bun install
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Run the App
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+```bash
+npm run dev
+# or
+bun dev
 ```
