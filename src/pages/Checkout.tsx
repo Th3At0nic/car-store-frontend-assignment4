@@ -119,9 +119,15 @@ const Checkout = () => {
               className="mt-6 bg-blue-600 hover:bg-blue-700"
               size="large"
               onClick={handleOrder}
+              disabled={user?.role === "admin"}
             >
               Order Now
             </Button>
+            {user?.role === "admin" && (
+              <div className="flex justify-center text-red-500">
+                <p>Admin can't make an order. Login From User Account</p>
+              </div>
+            )}
           </Card>
         </div>
       </div>
