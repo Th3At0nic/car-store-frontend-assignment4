@@ -62,7 +62,16 @@ const MyOrders = () => {
         My Orders
       </h1>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        style={{
+          // display: "grid",
+          // gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 24,
+          marginTop: 16,
+        }}
+      >
         {orders.map((order) => (
           <Card
             key={order._id}
@@ -108,7 +117,7 @@ const MyOrders = () => {
               </p>
             )}
 
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap">
               <Tag color={getOrderStatusColor(order.orderStatus)}>
                 {order.orderStatus}
               </Tag>

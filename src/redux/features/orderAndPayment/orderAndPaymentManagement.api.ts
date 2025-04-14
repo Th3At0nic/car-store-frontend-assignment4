@@ -84,7 +84,7 @@ const orderAndPaymentManagementApi = baseApi.injectEndpoints({
           method: "DELETE",
         };
       },
-      invalidatesTags: ["orders"],
+      invalidatesTags: ["orders", "revenue"],
     }),
   }),
 });

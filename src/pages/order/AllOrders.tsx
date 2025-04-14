@@ -87,8 +87,10 @@ const AllOrders = () => {
       ) : (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            // display: "grid",
+            // gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            display: "flex",
+            flexWrap: "wrap",
             gap: 24,
             marginTop: 16,
           }}
