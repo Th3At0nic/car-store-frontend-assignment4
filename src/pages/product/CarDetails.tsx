@@ -131,7 +131,7 @@ const CarDetails = ({ type }: { type: "admin" | "user" }) => {
               </p>
               <p>
                 <strong>Price:</strong>{" "}
-                <span className="price">${car.price}</span>
+                <span className="price">৳ {car.price}</span>
               </p>
               <p>
                 <strong>Stock:</strong>{" "}

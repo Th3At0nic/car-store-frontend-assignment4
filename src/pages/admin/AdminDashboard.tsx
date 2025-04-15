@@ -28,7 +28,7 @@ const AdminDashboard = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <DashboardCard title="Total Orders" value={totalOrdersCount} />
-        <DashboardCard title="Total Revenue" value={`$${totalRevenue}`} />
+        <DashboardCard title="Total Revenue" value={`৳${totalRevenue}`} />
         <DashboardCard title="Cars in Stock" value={carsInStockCount} />
         <DashboardCard title="Total Customers" value={totalCustomers} />
       </div>

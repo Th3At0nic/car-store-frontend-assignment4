@@ -145,7 +145,7 @@ const TrackOrder = () => {
             </Tag>
           </p>
           <p>
-            <strong>Total Price:</strong> ${totalPrice}
+            <strong>Total Price:</strong> ৳{totalPrice}
           </p>
           {estimatedDeliveryStart && (
             <p>
@@ -202,7 +202,7 @@ const TrackOrder = () => {
               <strong>Category:</strong> {car.category}
             </p>
             <p>
-              <strong>Price:</strong> ${car.price}
+              <strong>Price:</strong> ৳{car.price}
             </p>
             <p>
               <strong>Available:</strong> {car.inStock ? "Yes" : "No"}

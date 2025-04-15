@@ -100,7 +100,7 @@ const MyOrders = () => {
               <span className="font-semibold">Quantity:</span> {order.quantity}
             </p>
             <p>
-              <span className="font-semibold">Total Price:</span> $
+              <span className="font-semibold">Total Price:</span> ৳
               {order.totalPrice}
             </p>
             <p>

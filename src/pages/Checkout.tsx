@@ -82,7 +82,7 @@ const Checkout = () => {
             <br />
             <Text>Category: {carData.category}</Text>
             <br />
-            <Text strong>Price per unit: ${carData.price}</Text>
+            <Text strong>Price per unit: ৳{carData.price}</Text>
             <br />
             <Text type={carData.inStock ? "success" : "danger"}>
               {carData.inStock ? "In Stock" : "Out of Stock"}
@@ -105,7 +105,7 @@ const Checkout = () => {
 
             <div className="flex justify-between items-center">
               <Text strong>Total Price:</Text>
-              <Text className="text-lg font-semibold">${totalPrice}</Text>
+              <Text className="text-lg font-semibold">৳{totalPrice}</Text>
             </div>
 
             <div className="mt-6">

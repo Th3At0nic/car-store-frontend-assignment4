@@ -70,7 +70,7 @@ const FeaturedCars = () => {
                 {car.brand} {car.model}
               </h3>
               <p className="text-lg font-bold text-gray-600 mt-2">
-                $ {car.price}
+                ৳ {car.price}
               </p>
               <Link to={`/cars/${car._id}`}>
                 <Button type="primary" className="mt-4 w-full">

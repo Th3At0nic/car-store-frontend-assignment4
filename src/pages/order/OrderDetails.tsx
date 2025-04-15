@@ -96,7 +96,7 @@ const OrderDetails = () => {
           </Descriptions.Item>
           <Descriptions.Item label="Quantity">{quantity}</Descriptions.Item>
           <Descriptions.Item label="Total Price">
-            ${totalPrice}
+          ৳{totalPrice}
           </Descriptions.Item>
           <Descriptions.Item label="Order Date">
             {new Date(createdAt).toLocaleString()}
@@ -118,7 +118,7 @@ const OrderDetails = () => {
           <Descriptions.Item label="Model">{car.model}</Descriptions.Item>
           <Descriptions.Item label="Year">{car.year}</Descriptions.Item>
           <Descriptions.Item label="Category">{car.category}</Descriptions.Item>
-          <Descriptions.Item label="Price">${car.price}</Descriptions.Item>
+          <Descriptions.Item label="Price">৳{car.price}</Descriptions.Item>
           <Descriptions.Item label="In Stock">
             <Tag color={car.inStock ? "green" : "red"}>
               {car.inStock ? "Yes" : "No"}
