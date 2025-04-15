@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useDeleteOrderMutation,
   useGetAnOrderQuery,
@@ -11,6 +11,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { toast } from "sonner";
 
 const OrderDetails = () => {
+  const navigate = useNavigate();
   const { orderId } = useParams();
   const [deleteOrder] = useDeleteOrderMutation();
   const {
@@ -50,6 +51,9 @@ const OrderDetails = () => {
 
     if (result?.data?.success) {
       toast.success(result.data.message);
+      setTimeout(() => {
+        navigate("/admin/orders");
+      }, 1000);
     } else if (result?.error) {
       toast.error((result?.error as TError)?.data.message);
     } else {
@@ -96,7 +100,7 @@ const OrderDetails = () => {
           </Descriptions.Item>
           <Descriptions.Item label="Quantity">{quantity}</Descriptions.Item>
           <Descriptions.Item label="Total Price">
-          ৳{totalPrice}
+            ৳{totalPrice}
           </Descriptions.Item>
           <Descriptions.Item label="Order Date">
             {new Date(createdAt).toLocaleString()}
