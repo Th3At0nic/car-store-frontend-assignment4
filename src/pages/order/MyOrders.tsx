@@ -94,7 +94,9 @@ const MyOrders = () => {
               {order.customerAddress}
             </p>
             <p>
-              <span className="font-semibold">Car ID:</span> {order.car._id}
+              <span className="font-semibold">Car ID:</span>{" "}
+              {order?.car.slice(-8).toUpperCase()}{" "}
+              {/**ignore this type error, its working.rahat */}
             </p>
             <p>
               <span className="font-semibold">Quantity:</span> {order.quantity}
