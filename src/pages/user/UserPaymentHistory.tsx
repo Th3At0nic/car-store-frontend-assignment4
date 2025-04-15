@@ -64,7 +64,7 @@ const UserPaymentHistory = () => {
           dataSource={paymentHistory.data}
           columns={columns}
           rowKey="_id"
-          pagination={{ pageSize: 5 }}
+          pagination={{ pageSize: 10 }}
           bordered
           className="overflow-x-auto"
         />
