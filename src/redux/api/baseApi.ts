@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { TError } from "../../types";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api", // https://car-store-backend-assignment2.vercel.app
+  baseUrl: "https://car-store-backend-assignment2.vercel.app/api", // http://localhost:5000
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -60,7 +60,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     } else {
       // Request a new token
       const refreshResult = await fetch(
-        " http://localhost:5000/api/auth/refresh-token", //  https://car-store-backend-assignment2.vercel.app
+        "https://car-store-backend-assignment2.vercel.app/api/auth/refresh-token", //http://localhost:5000
         {
           method: "POST",
           credentials: "include",

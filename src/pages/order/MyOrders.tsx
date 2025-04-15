@@ -3,10 +3,10 @@ import dayjs from "dayjs";
 import { Card, Tag } from "antd";
 import LoadingSpinner from "../../utils/LoadingSpinner";
 import { NoDataCard } from "../../utils/NoDataCard";
-import { TOrder } from "../../types";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
 import { currentUser } from "../../redux/features/auth/authSlice";
+import { TOrder } from "../../types";
 
 const getOrderStatusColor = (status: string) => {
   switch (status) {
@@ -95,8 +95,7 @@ const MyOrders = () => {
             </p>
             <p>
               <span className="font-semibold">Car ID:</span>{" "}
-              {order?.car.slice(-8).toUpperCase()}{" "}
-              {/**ignore this type error, its working.rahat */}
+              {order?.car?._id.slice(-8).toUpperCase()}{" "}
             </p>
             <p>
               <span className="font-semibold">Quantity:</span> {order.quantity}
