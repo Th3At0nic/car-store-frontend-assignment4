@@ -3,6 +3,9 @@ import { Table, Tag, Typography } from "antd";
 import dayjs from "dayjs";
 import LoadingSpinner from "../../utils/LoadingSpinner";
 import { NoDataCard } from "../../utils/NoDataCard";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
 
 const { Title } = Typography;
 
@@ -45,7 +48,7 @@ const UserPaymentHistory = () => {
       title: "Paid At",
       dataIndex: "paidAt",
       key: "paidAt",
-      render: (date: string) => dayjs(date).format("MMM D, YYYY - h:mm A"),
+      render: (date: string) => dayjs.utc(date).format("MMM D, YYYY - h:mm A"),
     },
   ];
 
