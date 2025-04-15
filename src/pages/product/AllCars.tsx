@@ -111,7 +111,7 @@ const AllCars = ({ type }: { type: "admin" | "user" }) => {
                 <h3 className="car-title">
                   {car.brand} {car.model}
                 </h3>
-                <p className="car-price">$ {car.price}</p>
+                <p className="car-price">৳ {car.price}</p>
                 {type === "user" ? (
                   <Link to={`/cars/${car._id}`}>
                     <Button type="primary" className="view-details-btn">
