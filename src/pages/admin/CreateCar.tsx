@@ -52,7 +52,7 @@ const CreateCar = () => {
       alert(`You Must Select Category`);
       return;
     }
-    if (!data.inStock) {
+    if (data.inStock === undefined) {
       alert(`You Must Select In Stock`);
       return;
     }

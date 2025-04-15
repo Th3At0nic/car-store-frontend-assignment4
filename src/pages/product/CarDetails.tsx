@@ -169,7 +169,7 @@ const CarDetails = ({ type }: { type: "admin" | "user" }) => {
             ) : (
               <div className="buy-now-btn">
                 <Button
-                  disabled={user?.role === "admin"}
+                  disabled={!car.inStock || user?.role === "admin"}
                   onClick={onBuyNowClick}
                   type="primary"
                   size="large"
