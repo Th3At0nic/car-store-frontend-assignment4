@@ -46,8 +46,8 @@ const FeaturedCars = () => {
       </div>
 
       {/* Featured Cars Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {cars?.data?.map((car: TCar, index: number) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {cars?.data?.slice(0, 8).map((car: TCar, index: number) => (
           <Card
             key={index}
             hoverable
