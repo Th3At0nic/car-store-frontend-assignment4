@@ -75,7 +75,7 @@ const CreateCar = () => {
       formData.append("files", file);
     });
 
-    console.log("formData", Object.fromEntries(formData));
+    // console.log("formData", Object.fromEntries(formData));
     const result = await addACar(formData);
 
     if (result?.data?.success) {
