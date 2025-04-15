@@ -101,7 +101,7 @@ const AllOrders = () => {
               hoverable
               cover={
                 <img
-                  alt={`${order.car.brand} ${order.car.model}`}
+                  alt={`${order?.car?.brand} ${order.car.model}`}
                   src={order.car.images[0]}
                   style={{ height: 200, objectFit: "cover" }}
                 />
@@ -109,7 +109,7 @@ const AllOrders = () => {
             >
               {/* Car Info */}
               <Title level={5}>
-                {order.car.brand} {order.car.model} ({order.car.year})
+                {order?.car?.brand} {order.car.model} ({order.car.year})
               </Title>
               <Text type="secondary">Category: {order.car.category}</Text>
 
