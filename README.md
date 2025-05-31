@@ -1,7 +1,7 @@
 # 🚗 CarNexa - Car Store – Frontend (Assignment 4)
 
 **Live Frontend**: https://carstore-client.vercel.app/
-**Live Backend**: https://assignment2-car-store.vercel.app/
+**Live Backend**: https://car-store-backend-assignment2.vercel.app/
 
 A professional **Car Store platform** with full-stack functionalities: user registration, login, car listing, order management, and admin control. Built with **React, TypeScript, Redux Toolkit, Ant Design, Tailwind CSS**, and connected to a powerful backend.
 
